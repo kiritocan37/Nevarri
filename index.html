@@ -1774,6 +1774,383 @@
   }
   .search-overlay-close:hover { color: var(--black); }
 
+  /* SEARCH SUGGESTIONS */
+  .search-suggestions {
+    max-width: 600px;
+    margin: 16px auto 0;
+    display: none;
+  }
+  .search-overlay.open .search-suggestions.has-content { display: block; }
+
+  .search-section-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .search-section-title button {
+    color: var(--grey-500);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .search-section-title button:hover { color: var(--black); }
+
+  .search-history {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .search-history-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px 6px 14px;
+    background: var(--cream);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .search-history-chip:hover {
+    background: var(--black);
+    color: var(--white);
+  }
+  .search-history-chip .x {
+    font-size: 12px;
+    opacity: 0.5;
+    margin-left: 4px;
+    padding: 2px 4px;
+  }
+  .search-history-chip .x:hover { opacity: 1; }
+
+  .search-popular {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .search-popular-chip {
+    padding: 6px 14px;
+    border: 1px solid var(--grey-100);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .search-popular-chip:hover {
+    border-color: var(--black);
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 12px;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .search-result-item:hover { background: var(--cream); }
+  .search-result-img {
+    width: 56px;
+    height: 72px;
+    object-fit: cover;
+    object-position: top;
+    flex-shrink: 0;
+  }
+  .search-result-info { flex: 1; min-width: 0; }
+  .search-result-name {
+    font-size: 14px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .search-result-meta {
+    font-size: 11px;
+    color: var(--grey-500);
+    margin-bottom: 4px;
+  }
+  .search-result-price {
+    font-family: var(--font-display);
+    font-size: 16px;
+  }
+
+  /* ===========================
+     WISHLIST DRAWER (right side)
+     =========================== */
+  .wish-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(420px, 90vw);
+    height: 100vh;
+    background: var(--white);
+    z-index: 200;
+    transform: translateX(100%);
+    transition: transform 0.5s var(--ease-out);
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--grey-100);
+    box-shadow: -8px 0 24px rgba(0,0,0,0.06);
+  }
+  .wish-drawer.open { transform: translateX(0); }
+
+  .wish-drawer-header {
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid var(--grey-100);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .wish-drawer-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .wish-drawer-count {
+    font-size: 11px;
+    color: var(--grey-500);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .wish-drawer-close {
+    font-size: 22px;
+    padding: 6px;
+    color: var(--grey-500);
+    transition: color 0.2s;
+  }
+  .wish-drawer-close:hover { color: var(--black); }
+
+  .wish-drawer-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 16px;
+  }
+
+  .wish-item {
+    display: flex;
+    gap: 14px;
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--grey-100);
+    transition: background 0.2s;
+  }
+  .wish-item:hover { background: var(--cream); }
+
+  .wish-item-img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    object-position: top;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .wish-item-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wish-item-name {
+    font-size: 13px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    line-height: 1.3;
+  }
+  .wish-item-name:hover { color: var(--accent); }
+
+  .wish-item-meta {
+    font-size: 11px;
+    color: var(--grey-500);
+    margin-bottom: 8px;
+  }
+
+  .wish-item-price {
+    font-family: var(--font-display);
+    font-size: 18px;
+    margin-top: auto;
+  }
+
+  .wish-item-remove {
+    color: var(--grey-500);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    align-self: flex-start;
+    transition: color 0.2s;
+  }
+  .wish-item-remove:hover { color: var(--error); }
+
+  .wish-drawer-footer {
+    padding: 20px 28px 24px;
+    border-top: 1px solid var(--grey-100);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--white);
+  }
+
+  .wish-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .wish-total-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey-500);
+  }
+  .wish-total-amount {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+  }
+
+  .wish-btn-primary {
+    background: var(--black);
+    color: var(--white);
+    padding: 14px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .wish-btn-primary:hover { background: var(--accent); }
+  .wish-btn-primary svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .wish-btn-secondary {
+    background: transparent;
+    color: var(--black);
+    padding: 12px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid var(--grey-100);
+    transition: border-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .wish-btn-secondary:hover { border-color: var(--black); }
+  .wish-btn-secondary svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .wish-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 32px;
+    text-align: center;
+  }
+  .wish-empty-icon {
+    color: var(--grey-300);
+    margin-bottom: 20px;
+  }
+  .wish-empty-icon svg {
+    width: 48px;
+    height: 48px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1;
+  }
+  .wish-empty-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .wish-empty-text {
+    font-size: 13px;
+    color: var(--grey-500);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .wish-empty-btn {
+    padding: 12px 24px;
+    background: var(--black);
+    color: var(--white);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .wish-empty-btn:hover { background: var(--accent); }
+
+  /* Wishlist HEART animation (when added) */
+  @keyframes heartPop {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.4); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
+  .wish-btn.popping {
+    animation: heartPop 0.5s var(--ease-out);
+  }
+
+  /* Floating heart particle */
+  .heart-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    color: var(--accent);
+    font-size: 20px;
+    opacity: 1;
+    transition: all 0.8s cubic-bezier(0.5, 0, 0.5, 1);
+  }
+  .heart-particle.fly {
+    opacity: 0;
+    transform: translate(var(--dx, 0), var(--dy, -100px)) scale(0.5);
+  }
+
+  /* Bigger nav count when has items */
+  .nav-count {
+    transition: transform 0.3s var(--ease-out);
+  }
+  .nav-count.bump {
+    animation: heartPop 0.5s var(--ease-out);
+  }
+
   /* ===========================
      RESPONSIVE
      =========================== */
@@ -1976,6 +2353,21 @@
       padding: 48px 24px 32px;
     }
     .success-title { font-size: 26px; }
+
+    /* Wish drawer на мобиле — full width */
+    .wish-drawer {
+      width: 100%;
+    }
+    .wish-drawer-header { padding: 20px 20px 16px; }
+    .wish-drawer-list { padding: 4px 12px; }
+    .wish-drawer-footer { padding: 16px 20px; }
+    .wish-item-img { width: 70px; height: 90px; }
+    .wish-item-name { font-size: 12px; }
+
+    /* Search overlay на мобиле */
+    .search-suggestions { margin-top: 12px; }
+    .search-result-img { width: 48px; height: 64px; }
+    .search-results { max-height: 60vh; }
   }
 
   /* Fade-in on scroll */
@@ -2006,10 +2398,37 @@
 <div class="search-overlay" id="searchOverlay">
   <div class="search-overlay-inner">
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="search" id="searchOverlayInput" placeholder="Що шукаєте? (піжама, халат, шовк...)" aria-label="Пошук">
+    <input type="search" id="searchOverlayInput" placeholder="Що шукаєте? (піжама, халат, шовк...)" aria-label="Пошук" autocomplete="off">
     <button class="search-overlay-close" id="searchOverlayClose">Закрити</button>
   </div>
+  <div class="search-suggestions" id="searchSuggestions"></div>
 </div>
+
+<!-- WISHLIST DRAWER -->
+<aside class="wish-drawer" id="wishDrawer" aria-label="Обране" aria-hidden="true">
+  <div class="wish-drawer-header">
+    <div>
+      <div class="wish-drawer-title">Ваше обране</div>
+      <div class="wish-drawer-count" id="wishDrawerCount">0 товарів</div>
+    </div>
+    <button class="wish-drawer-close" id="wishDrawerClose" aria-label="Закрити">✕</button>
+  </div>
+  <div class="wish-drawer-list" id="wishDrawerList"></div>
+  <div class="wish-drawer-footer" id="wishDrawerFooter" style="display: none;">
+    <div class="wish-total">
+      <span class="wish-total-label">Загальна сума</span>
+      <span class="wish-total-amount" id="wishTotal">0 ₴</span>
+    </div>
+    <button class="wish-btn-primary" id="wishOrderAll">
+      <svg viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
+      Замовити весь список
+    </button>
+    <button class="wish-btn-secondary" id="wishShareTg">
+      <svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+      Поділитись в Telegram
+    </button>
+  </div>
+</aside>
 
 <!-- SIDE MENU -->
 <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
@@ -2708,6 +3127,15 @@ function filterCategory(cat) {
   renderProducts();
   closeMenu();
 
+  // Update URL
+  const url = new URL(window.location.href);
+  if (cat === 'all') {
+    url.searchParams.delete('cat');
+  } else {
+    url.searchParams.set('cat', cat);
+  }
+  history.replaceState(null, '', url);
+
   // Scroll to catalog
   if (cat !== 'all') {
     document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
@@ -2735,28 +3163,156 @@ searchInput.addEventListener('input', (e) => {
   }, 200);
 });
 
-// Search trigger — opens search overlay
-document.getElementById('searchTrigger').addEventListener('click', () => {
-  const overlay = document.getElementById('searchOverlay');
-  overlay.classList.add('open');
-  setTimeout(() => document.getElementById('searchOverlayInput').focus(), 100);
-});
+// ============================================================
+// SEARCH — with history, suggestions, URL sync
+// ============================================================
+const POPULAR_QUERIES = ['Піжама', 'Халат', 'Сорочка', 'Літній', 'Plus Size', 'Для вагітних'];
 
-document.getElementById('searchOverlayClose').addEventListener('click', () => {
+function getSearchHistory() {
+  try {
+    return JSON.parse(localStorage.getItem('nevarri_search_history') || '[]');
+  } catch { return []; }
+}
+
+function addToSearchHistory(query) {
+  if (!query || query.length < 2) return;
+  let history = getSearchHistory();
+  history = history.filter(q => q.toLowerCase() !== query.toLowerCase());
+  history.unshift(query);
+  history = history.slice(0, 10);
+  localStorage.setItem('nevarri_search_history', JSON.stringify(history));
+}
+
+function removeFromSearchHistory(query) {
+  let history = getSearchHistory().filter(q => q !== query);
+  localStorage.setItem('nevarri_search_history', JSON.stringify(history));
+  renderSearchSuggestions('');
+}
+
+function clearSearchHistory() {
+  localStorage.removeItem('nevarri_search_history');
+  renderSearchSuggestions('');
+}
+
+function renderSearchSuggestions(query) {
+  const sug = document.getElementById('searchSuggestions');
+  query = (query || '').toLowerCase().trim();
+
+  let html = '';
+
+  // If user is typing — show live results
+  if (query.length >= 1) {
+    const results = PRODUCTS.filter(p =>
+      p.name.toLowerCase().includes(query) ||
+      p.meta.toLowerCase().includes(query) ||
+      CAT_NAMES[p.cat].toLowerCase().includes(query)
+    ).slice(0, 6);
+
+    if (results.length > 0) {
+      html += `<div class="search-section-title"><span>Знайдено ${results.length}</span></div>`;
+      html += `<div class="search-results">`;
+      html += results.map(p => `
+        <div class="search-result-item" onclick="closeSearchOverlay(); openProductModal(${p.id})">
+          <img src="${p.img}" alt="${p.name}" class="search-result-img" loading="lazy">
+          <div class="search-result-info">
+            <div class="search-result-name">${p.name}</div>
+            <div class="search-result-meta">${p.meta}</div>
+            <div class="search-result-price">${p.price.toLocaleString('uk-UA')} ₴</div>
+          </div>
+        </div>
+      `).join('');
+      html += `</div>`;
+    } else {
+      html += `<div class="search-section-title"><span>Нічого не знайдено за «${query}»</span></div>`;
+    }
+  } else {
+    // Empty state — show history + popular
+    const history = getSearchHistory();
+    if (history.length > 0) {
+      html += `<div class="search-section-title"><span>Ваші пошуки</span><button onclick="clearSearchHistory()">Очистити</button></div>`;
+      html += `<div class="search-history">`;
+      html += history.map(q => `
+        <span class="search-history-chip" onclick="event.stopPropagation(); doSearch('${q.replace(/'/g, "\\'")}')">
+          ${q}
+          <span class="x" onclick="event.stopPropagation(); removeFromSearchHistory('${q.replace(/'/g, "\\'")}')">✕</span>
+        </span>
+      `).join('');
+      html += `</div>`;
+    }
+    html += `<div class="search-section-title"><span>Популярні запити</span></div>`;
+    html += `<div class="search-popular">`;
+    html += POPULAR_QUERIES.map(q => `
+      <span class="search-popular-chip" onclick="doSearch('${q.replace(/'/g, "\\'")}')">${q}</span>
+    `).join('');
+    html += `</div>`;
+  }
+
+  sug.innerHTML = html;
+  sug.classList.toggle('has-content', !!html);
+}
+
+function doSearch(query) {
+  document.getElementById('searchOverlayInput').value = query;
+  document.getElementById('searchInput').value = query;
+  searchQuery = query.toLowerCase().trim();
+  addToSearchHistory(query);
+  renderProducts();
+  // Update URL
+  const url = new URL(window.location.href);
+  if (searchQuery) {
+    url.searchParams.set('search', query);
+  } else {
+    url.searchParams.delete('search');
+  }
+  history.replaceState(null, '', url);
+  closeSearchOverlay();
+  document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
+}
+
+function openSearchOverlay() {
+  document.getElementById('searchOverlay').classList.add('open');
+  setTimeout(() => document.getElementById('searchOverlayInput').focus(), 100);
+  renderSearchSuggestions(document.getElementById('searchOverlayInput').value);
+}
+
+function closeSearchOverlay() {
   document.getElementById('searchOverlay').classList.remove('open');
-});
+}
+
+// Search trigger — opens search overlay
+document.getElementById('searchTrigger').addEventListener('click', openSearchOverlay);
+document.getElementById('searchOverlayClose').addEventListener('click', closeSearchOverlay);
 
 // Search in overlay
 let overlaySearchTimer;
 document.getElementById('searchOverlayInput').addEventListener('input', (e) => {
   clearTimeout(overlaySearchTimer);
+  const value = e.target.value;
+  // Update suggestions immediately
+  renderSearchSuggestions(value);
+  // Debounce actual filter
   overlaySearchTimer = setTimeout(() => {
-    searchQuery = e.target.value.toLowerCase().trim();
+    searchQuery = value.toLowerCase().trim();
     renderProducts();
+    // Update URL
+    const url = new URL(window.location.href);
     if (searchQuery) {
-      document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
+      url.searchParams.set('search', value);
+    } else {
+      url.searchParams.delete('search');
     }
-  }, 200);
+    history.replaceState(null, '', url);
+  }, 250);
+});
+
+// Submit on Enter
+document.getElementById('searchOverlayInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const value = e.target.value.trim();
+    if (value) {
+      doSearch(value);
+    }
+  }
 });
 
 // Sync search inputs
@@ -2798,9 +3354,17 @@ menuOverlay.addEventListener('click', closeMenu);
 // ============================================================
 function toggleWish(id, btn) {
   const idx = wishlist.indexOf(id);
+  const card = btn ? btn.closest('.card, .wish-item') : null;
+
   if (idx === -1) {
     wishlist.push(id);
-    if (btn) btn.classList.add('active');
+    if (btn) {
+      btn.classList.add('active');
+      btn.classList.add('popping');
+      setTimeout(() => btn.classList.remove('popping'), 500);
+      // Flying heart particle
+      flyingHeart(btn);
+    }
     showToast('Додано в обране');
   } else {
     wishlist.splice(idx, 1);
@@ -2809,56 +3373,129 @@ function toggleWish(id, btn) {
   }
   localStorage.setItem('nevarri_wishlist', JSON.stringify(wishlist));
   updateWishCount();
+  // Update drawer if open
+  if (document.getElementById('wishDrawer').classList.contains('open')) {
+    renderWishDrawer();
+  }
+}
+
+function flyingHeart(fromEl) {
+  const rect = fromEl.getBoundingClientRect();
+  const target = document.getElementById('wishToggle').getBoundingClientRect();
+  const heart = document.createElement('div');
+  heart.className = 'heart-particle';
+  heart.textContent = '❤';
+  heart.style.left = rect.left + rect.width / 2 + 'px';
+  heart.style.top = rect.top + rect.height / 2 + 'px';
+  document.body.appendChild(heart);
+  requestAnimationFrame(() => {
+    const dx = target.left - rect.left;
+    const dy = target.top - rect.top;
+    heart.style.setProperty('--dx', dx + 'px');
+    heart.style.setProperty('--dy', dy + 'px');
+    heart.classList.add('fly');
+  });
+  setTimeout(() => heart.remove(), 800);
 }
 
 function updateWishCount() {
   const el = document.getElementById('wishCount');
   el.textContent = wishlist.length || '';
   el.setAttribute('data-count', wishlist.length);
+  if (wishlist.length > 0) {
+    el.classList.add('bump');
+    setTimeout(() => el.classList.remove('bump'), 500);
+  }
 }
 
-document.getElementById('wishToggle').addEventListener('click', () => {
-  if (wishlist.length === 0) {
-    showToast('В обраному порожньо');
+// =============== WISHLIST DRAWER ===============
+const wishDrawer = document.getElementById('wishDrawer');
+
+function openWishDrawer() {
+  renderWishDrawer();
+  wishDrawer.classList.add('open');
+  menuOverlay.classList.add('active');
+  wishDrawer.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeWishDrawer() {
+  wishDrawer.classList.remove('open');
+  menuOverlay.classList.remove('active');
+  wishDrawer.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function renderWishDrawer() {
+  const list = document.getElementById('wishDrawerList');
+  const footer = document.getElementById('wishDrawerFooter');
+  const countEl = document.getElementById('wishDrawerCount');
+  const items = PRODUCTS.filter(p => wishlist.includes(p.id));
+
+  countEl.textContent = items.length === 0
+    ? 'Поки порожньо'
+    : `${items.length} ${items.length === 1 ? 'товар' : items.length < 5 ? 'товари' : 'товарів'}`;
+
+  if (items.length === 0) {
+    list.innerHTML = `
+      <div class="wish-empty">
+        <div class="wish-empty-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 class="wish-empty-title">Поки нічого не додано</h3>
+        <p class="wish-empty-text">Тисніть на ❤ біля товару, щоб зберегти його тут — і повернутись пізніше.</p>
+        <button class="wish-empty-btn" onclick="closeWishDrawer(); document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">Перейти до каталогу</button>
+      </div>
+    `;
+    footer.style.display = 'none';
     return;
   }
-  // Show wishlist items as full cards
-  const wishItems = PRODUCTS.filter(p => wishlist.includes(p.id));
-  grid.innerHTML = `
-    <div style="grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; padding: 8px 0 24px; border-bottom: 1px solid var(--grey-100); margin-bottom: 8px;">
-      <div>
-        <div class="section-eyebrow">Ваше обране</div>
-        <div style="font-family: var(--font-display); font-size: 24px; font-style: italic;">${wishItems.length} ${wishItems.length === 1 ? 'товар' : wishItems.length < 5 ? 'товари' : 'товарів'}</div>
+
+  list.innerHTML = items.map(p => `
+    <div class="wish-item" data-id="${p.id}">
+      <img src="${p.img}" alt="${p.name}" class="wish-item-img" onclick="closeWishDrawer(); openProductModal(${p.id})">
+      <div class="wish-item-info">
+        <div class="wish-item-name" onclick="closeWishDrawer(); openProductModal(${p.id})">${p.name}</div>
+        <div class="wish-item-meta">${p.meta}</div>
+        <div class="wish-item-price">${p.price.toLocaleString('uk-UA')} ₴</div>
       </div>
-      <button onclick="filterCategory('all')" style="font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 20px; border: 1px solid var(--black); transition: all 0.2s;" onmouseover="this.style.background='var(--black)';this.style.color='var(--white)'" onmouseout="this.style.background='';this.style.color=''">← До каталогу</button>
+      <button class="wish-item-remove" onclick="toggleWish(${p.id})">Видалити</button>
     </div>
-    ${wishItems.map(p => `
-      <article class="card" role="listitem" data-id="${p.id}">
-        <div class="card-img" onclick="openProductModal(${p.id})">
-          <img src="${p.img}" alt="${p.name} — ${p.meta}" loading="lazy">
-          <div class="card-badges">
-            ${p.badges.map(b => `<span class="badge ${b === 'new' || b === 'hit' ? 'accent' : b === 'plus' ? 'plus' : ''}">${BADGE_NAMES[b]}</span>`).join('')}
-          </div>
-          <button class="wish-btn active" onclick="event.stopPropagation(); toggleWish(${p.id}, this); this.closest('.card').remove(); if(document.querySelectorAll('.card').length===0) filterCategory('all')" aria-label="Видалити з обраного">
-            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-          <div class="card-quick">
-            ${p.sizes.map(s => `<span class="size-chip" onclick="event.stopPropagation(); openProductModal(${p.id}, '${s}')">${s}</span>`).join('')}
-          </div>
-        </div>
-        <div class="card-info">
-          <div class="card-name">${p.name}</div>
-          <div class="card-meta">${p.meta}</div>
-          <div class="card-price">${p.price.toLocaleString('uk-UA')} ₴</div>
-          <div class="card-mobile-sizes">${p.sizes.map(s => `<span>${s}</span>`).join('')}</div>
-        </div>
-      </article>
-    `).join('')}
-  `;
-  productCount.textContent = wishlist.length;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
-  closeMenu();
+  `).join('');
+
+  const total = items.reduce((sum, p) => sum + p.price, 0);
+  document.getElementById('wishTotal').textContent = total.toLocaleString('uk-UA') + ' ₴';
+  footer.style.display = 'flex';
+}
+
+document.getElementById('wishToggle').addEventListener('click', openWishDrawer);
+document.getElementById('wishDrawerClose').addEventListener('click', closeWishDrawer);
+
+// Order all wishlist items
+document.getElementById('wishOrderAll').addEventListener('click', () => {
+  const items = PRODUCTS.filter(p => wishlist.includes(p.id));
+  const total = items.reduce((sum, p) => sum + p.price, 0);
+  const list = items.map(p => `• ${p.name} — ${p.price.toLocaleString('uk-UA')} ₴`).join('\n');
+  const msg = `Хочу замовити з обраного:\n\n${list}\n\nЗагальна сума: ${total.toLocaleString('uk-UA')} ₴`;
+  closeWishDrawer();
+  // Pre-fill main form with the message
+  document.getElementById('fComment').value = msg;
+  document.getElementById('fCat').value = 'Інше питання';
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => document.getElementById('fName').focus(), 600);
+  showToast('Список додано до форми — залиш контакти');
+});
+
+// Share wishlist via Telegram
+document.getElementById('wishShareTg').addEventListener('click', () => {
+  const items = PRODUCTS.filter(p => wishlist.includes(p.id));
+  if (items.length === 0) return;
+  const list = items.map(p => `• ${p.name} (${p.price.toLocaleString('uk-UA')} ₴)`).join('\n');
+  const total = items.reduce((sum, p) => sum + p.price, 0);
+  const text = encodeURIComponent(
+    `Дивись що мені подобається на NEVARRI:\n\n${list}\n\nРазом: ${total.toLocaleString('uk-UA')} ₴\n\nhttps://nevarri.vercel.app`
+  );
+  window.open(`https://t.me/share/url?url=https://nevarri.vercel.app&text=${text}`, '_blank');
 });
 
 // ============================================================
@@ -3161,9 +3798,34 @@ document.addEventListener('keydown', (e) => {
     closeMenu();
     closeModal();
     closeSuccessModal();
-    document.getElementById('searchOverlay').classList.remove('open');
+    closeWishDrawer();
+    closeSearchOverlay();
   }
 });
+
+// Click on overlay also closes drawer
+menuOverlay.addEventListener('click', () => {
+  closeMenu();
+  closeWishDrawer();
+});
+
+// ============================================================
+// RESTORE SEARCH FROM URL
+// ============================================================
+function restoreFromURL() {
+  const url = new URL(window.location.href);
+  const search = url.searchParams.get('search');
+  if (search) {
+    document.getElementById('searchOverlayInput').value = search;
+    document.getElementById('searchInput').value = search;
+    searchQuery = search.toLowerCase().trim();
+    renderProducts();
+  }
+  const cat = url.searchParams.get('cat');
+  if (cat && CAT_NAMES[cat]) {
+    filterCategory(cat);
+  }
+}
 
 // ============================================================
 // PROMO BAR ROTATOR
@@ -3241,6 +3903,7 @@ updateWishCount();
 initPromoRotator();
 initFilterOverflow();
 initFloatingTg();
+restoreFromURL();
 
 // Re-check filter overflow after fonts load
 if (document.fonts && document.fonts.ready) {
@@ -3252,6 +3915,11 @@ window.filterCategory = filterCategory;
 window.openProductModal = openProductModal;
 window.toggleWish = toggleWish;
 window.closeSuccessModal = closeSuccessModal;
+window.doSearch = doSearch;
+window.removeFromSearchHistory = removeFromSearchHistory;
+window.clearSearchHistory = clearSearchHistory;
+window.closeSearchOverlay = closeSearchOverlay;
+window.closeWishDrawer = closeWishDrawer;
 </script>
 </body>
 </html>
