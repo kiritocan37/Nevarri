@@ -2489,10 +2489,10 @@
 <!-- HERO -->
 <section class="hero" aria-label="Головна колекція">
   <article class="hero-slide" onclick="filterCategory('summer')">
-    <img src="summer-kimono-beach.jpg" alt="Літній кімоно-сет з яскравим принтом біля моря" fetchpriority="high" width="540" height="785">
+    <img src="set-red-lace-camisole.jpg" alt="Червоний шовковий сет з мереживом" fetchpriority="high" width="891" height="1000">
     <div class="hero-caption">
-      <div class="hero-eyebrow">Колекція 2025</div>
-      <h1 class="hero-title">Літній<br>настрій</h1>
+      <div class="hero-eyebrow">Нова колекція</div>
+      <h1 class="hero-title">Відчуй<br>себе</h1>
       <a href="#catalog" class="hero-btn">
         Переглянути
         <svg viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
@@ -2500,11 +2500,11 @@
     </div>
   </article>
 
-  <article class="hero-slide" onclick="filterCategory('nightgowns')">
-    <img src="nightgown-chocolate-long.jpg" alt="Довга нічна сорочка шоколадного кольору" loading="eager" width="678" height="1000">
+  <article class="hero-slide" onclick="filterCategory('pajamas')">
+    <img src="pajama-floral-mauve.jpg" alt="Ніжна флоральна піжама рожево-лілова" loading="eager" width="591" height="1000">
     <div class="hero-caption">
-      <div class="hero-eyebrow">Елегантність</div>
-      <h2 class="hero-title">Вечірній<br>шарм</h2>
+      <div class="hero-eyebrow">Преміум якість</div>
+      <h2 class="hero-title">Ранковий<br>ритуал</h2>
       <a href="#catalog" class="hero-btn">
         Дивитись
         <svg viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
@@ -2559,7 +2559,7 @@
     </a>
   </div>
   <div class="editorial-img">
-    <img src="pajama-blue-floral.jpg" alt="Синя флоральна піжама на моделі в ретро-інтер'єрі" loading="lazy" width="571" height="1000">
+    <img src="pajama-black-lace-set.jpg" alt="Чорна піжама з мереживом — елегантність і комфорт" loading="lazy" width="710" height="1000">
   </div>
 </section>
 
@@ -2834,6 +2834,138 @@
 // PRODUCT DATA
 // ============================================================
 const PRODUCTS = [
+  // === ТОП — СТУДІЙНІ ФОТО ⭐9-10 ===
+  {
+    id: 22,
+    cat: 'summer',
+    img: 'set-red-lace-camisole.jpg',
+    name: 'Сет "Red Lace"',
+    meta: '100% Viscose · майка + шорти',
+    price: 1090,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: ['new', 'hit']
+  },
+  {
+    id: 8,
+    cat: 'pajamas',
+    img: 'pajama-leopard.jpg',
+    name: 'Піжама "Leo"',
+    meta: 'Dokuma Saten',
+    price: 1190,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: ['hit']
+  },
+  {
+    id: 30,
+    cat: 'pajamas',
+    img: 'pajama-floral-mauve.jpg',
+    name: 'Піжама "Floral Mauve"',
+    meta: '100% Viscose · сорочка + штани',
+    price: 1390,
+    sizes: ['S', 'M', 'L', 'XL', '2XL'],
+    badges: ['new']
+  },
+  {
+    id: 26,
+    cat: 'pajamas',
+    img: 'pajama-black-lace-set.jpg',
+    name: 'Піжама "Black Lace"',
+    meta: 'Viscose · футболка + шорти з мереживом',
+    price: 1190,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: ['hit']
+  },
+  {
+    id: 27,
+    cat: 'nightgowns',
+    img: 'nightgown-bordeaux-lace.jpg',
+    name: 'Сорочка "Bordeaux"',
+    meta: '94% Viscose · з мереживом',
+    price: 1250,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: ['new']
+  },
+  {
+    id: 28,
+    cat: 'nightgowns',
+    img: 'nightgown-ivory-lace.jpg',
+    name: 'Сорочка "Ivory"',
+    meta: '94% Viscose · ніжна з мереживом',
+    price: 1250,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: []
+  },
+  {
+    id: 11,
+    cat: 'pajamas',
+    img: 'pajama-white-lavender.jpg',
+    name: 'Піжама "Lavande"',
+    meta: 'Kaskorse · брючний сет',
+    price: 1090,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: []
+  },
+  {
+    id: 4,
+    cat: 'pajamas',
+    img: 'pajama-pink-stripe-olivera.jpg',
+    name: 'Піжама "Candy"',
+    meta: 'Viscose · шорт-сет',
+    price: 980,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: []
+  },
+  {
+    id: 7,
+    cat: 'pajamas',
+    img: 'pajama-grey-stripe-shorts.jpg',
+    name: 'Піжама "Stripe"',
+    meta: 'Viscose · шорт-сет',
+    price: 890,
+    sizes: ['M', 'L', 'XL', '2XL'],
+    badges: ['hit']
+  },
+  {
+    id: 19,
+    cat: 'summer',
+    img: 'set-mocha-shorts.jpg',
+    name: 'Сет "Mocha"',
+    meta: '100% Cotton · футболка + шорти',
+    price: 890,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: ['new']
+  },
+  {
+    id: 6,
+    cat: 'pajamas',
+    img: 'pajama-mint-plaid.jpg',
+    name: 'Піжама "Mint Check"',
+    meta: 'Viscose · брючний сет',
+    price: 1050,
+    sizes: ['M', 'L', 'XL', '2XL'],
+    badges: []
+  },
+  {
+    id: 9,
+    cat: 'plussize',
+    img: 'pajama-plus-blue.jpg',
+    name: 'Піжама "Azure"',
+    meta: 'Viscose · Plus Size',
+    price: 1050,
+    sizes: ['2XL', '3XL', '4XL'],
+    badges: ['plus']
+  },
+  {
+    id: 10,
+    cat: 'plussize',
+    img: 'pajama-plus-navy.jpg',
+    name: 'Піжама "Navy"',
+    meta: '100% Cotton · Plus Size',
+    price: 980,
+    sizes: ['2XL', '3XL', '4XL'],
+    badges: ['plus']
+  },
+  // === РЕШТА ===
   {
     id: 1,
     cat: 'summer',
@@ -2862,16 +2994,6 @@ const PRODUCTS = [
     meta: '100% Viscose',
     price: 1290,
     sizes: ['S', 'M', 'L', 'XL'],
-    badges: ['new']
-  },
-  {
-    id: 4,
-    cat: 'pajamas',
-    img: 'pajama-pink-stripe-olivera.jpg',
-    name: 'Піжама "Candy"',
-    meta: 'Viscose · шорт-сет',
-    price: 980,
-    sizes: ['S', 'M', 'L', 'XL'],
     badges: []
   },
   {
@@ -2885,66 +3007,6 @@ const PRODUCTS = [
     badges: []
   },
   {
-    id: 6,
-    cat: 'pajamas',
-    img: 'pajama-mint-plaid.jpg',
-    name: 'Піжама "Mint Check"',
-    meta: 'Viscose · брючний сет',
-    price: 1050,
-    sizes: ['M', 'L', 'XL', '2XL'],
-    badges: []
-  },
-  {
-    id: 7,
-    cat: 'pajamas',
-    img: 'pajama-grey-stripe-shorts.jpg',
-    name: 'Піжама "Stripe"',
-    meta: 'Viscose · шорт-сет',
-    price: 890,
-    sizes: ['M', 'L', 'XL', '2XL'],
-    badges: ['hit']
-  },
-  {
-    id: 8,
-    cat: 'pajamas',
-    img: 'pajama-leopard.jpg',
-    name: 'Піжама "Leo"',
-    meta: 'Dokuma Saten',
-    price: 1190,
-    sizes: ['S', 'M', 'L', 'XL'],
-    badges: ['new']
-  },
-  {
-    id: 9,
-    cat: 'plussize',
-    img: 'pajama-plus-blue.jpg',
-    name: 'Піжама "Azure"',
-    meta: 'Viscose · Plus Size',
-    price: 1050,
-    sizes: ['2XL', '3XL', '4XL'],
-    badges: ['plus']
-  },
-  {
-    id: 10,
-    cat: 'plussize',
-    img: 'pajama-plus-navy.jpg',
-    name: 'Піжама "Navy"',
-    meta: '100% Cotton · Plus Size',
-    price: 980,
-    sizes: ['2XL', '3XL', '4XL'],
-    badges: ['plus']
-  },
-  {
-    id: 11,
-    cat: 'pajamas',
-    img: 'pajama-white-lavender.jpg',
-    name: 'Піжама "Lavande"',
-    meta: 'Kaskorse · брючний сет',
-    price: 1090,
-    sizes: ['S', 'M', 'L', 'XL'],
-    badges: []
-  },
-  {
     id: 12,
     cat: 'summer',
     img: 'summer-peach-stars.jpg',
@@ -2952,7 +3014,7 @@ const PRODUCTS = [
     meta: 'Cotton · шорт-сет',
     price: 750,
     sizes: ['S', 'M', 'L', 'XL'],
-    badges: ['new']
+    badges: []
   },
   {
     id: 13,
@@ -2982,7 +3044,7 @@ const PRODUCTS = [
     meta: 'Viscose · шорт-сет',
     price: 1190,
     sizes: ['S', 'M', 'L', 'XL'],
-    badges: ['new']
+    badges: []
   },
   {
     id: 16,
@@ -3013,9 +3075,68 @@ const PRODUCTS = [
     price: 1490,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: ['new']
+  },
+  {
+    id: 20,
+    cat: 'summer',
+    img: 'set-white-seersucker.jpg',
+    name: 'Сет "Seersucker"',
+    meta: '100% Cotton · футболка + шорти',
+    price: 890,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: []
+  },
+  {
+    id: 21,
+    cat: 'summer',
+    img: 'set-muslin-rose.jpg',
+    name: 'Сет "Muslin Rose"',
+    meta: 'Cotton · кімоно-топ + шорти',
+    price: 1190,
+    sizes: ['S', 'M', 'L', 'XL', '2XL'],
+    badges: ['new']
+  },
+  {
+    id: 23,
+    cat: 'summer',
+    img: 'set-lavender-garden.jpg',
+    name: 'Сет "Lavender Garden"',
+    meta: '94% Viscose · майка + шорти',
+    price: 990,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: []
+  },
+  {
+    id: 24,
+    cat: 'summer',
+    img: 'set-white-stripe-shorts.jpg',
+    name: 'Сет "White Stripe"',
+    meta: 'Cotton · футболка + шорти',
+    price: 990,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: []
+  },
+  {
+    id: 25,
+    cat: 'summer',
+    img: 'set-peach-bloom.jpg',
+    name: 'Сет "Peach Bloom"',
+    meta: '94% Viscose · майка + шорти',
+    price: 990,
+    sizes: ['S', 'M', 'L', 'XL'],
+    badges: ['new']
+  },
+  {
+    id: 29,
+    cat: 'robes',
+    img: 'robe-white-long-lace.jpg',
+    name: 'Халат "White Maxi"',
+    meta: '94% Viscose · довгий з мереживом',
+    price: 1590,
+    sizes: ['S', 'M', 'L', 'XL', '2XL'],
+    badges: ['new']
   }
 ];
-
 const CAT_NAMES = {
   'all': 'Всі товари',
   'pajamas': 'Піжами',
