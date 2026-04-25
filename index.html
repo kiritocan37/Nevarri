@@ -11,20 +11,20 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://nevarri.com/">
+<meta property="og:url" content="https://nevarri.vercel.app/">
 <meta property="og:title" content="NEVARRI — Домашній одяг преміум якості">
 <meta property="og:description" content="Піжами, халати, нічні сорочки. Турецька якість — українська ціна.">
-<meta property="og:image" content="https://nevarri.com/products/summer-kimono-beach.jpg">
+<meta property="og:image" content="https://nevarri.vercel.app/summer-kimono-beach.jpg">
 <meta property="og:locale" content="uk_UA">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NEVARRI — Домашній одяг">
 <meta name="twitter:description" content="Піжами, халати, нічні сорочки преміум якості з Туреччини.">
-<meta name="twitter:image" content="https://nevarri.com/products/summer-kimono-beach.jpg">
+<meta name="twitter:image" content="https://nevarri.vercel.app/summer-kimono-beach.jpg">
 
 <!-- Canonical -->
-<link rel="canonical" href="https://nevarri.com/">
+<link rel="canonical" href="https://nevarri.vercel.app/">
 
 <title>NEVARRI — Домашній одяг преміум якості | Піжами, халати, сорочки</title>
 
@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <!-- Preload hero image for LCP -->
-<link rel="preload" as="image" href="products/summer-kimono-beach.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="summer-kimono-beach.jpg" fetchpriority="high">
 
 <!-- Fonts: Cormorant Garamond for display, Jost for body -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -48,11 +48,11 @@
   "@type": "ClothingStore",
   "name": "NEVARRI",
   "description": "Магазин домашнього одягу преміум якості з Туреччини",
-  "url": "https://nevarri.com",
-  "telephone": "+380000000000",
+  "url": "https://nevarri.vercel.app",
   "address": {
     "@type": "PostalAddress",
-    "addressCountry": "UA"
+    "addressCountry": "UA",
+    "addressLocality": "Одеса"
   },
   "currenciesAccepted": "UAH",
   "paymentAccepted": "Готівка, Банківська картка, Нова Пошта (накладений платіж)",
@@ -595,15 +595,33 @@
   }
 
   /* FILTERS */
+  .filters-wrap {
+    position: relative;
+    margin-bottom: 48px;
+  }
+  .filters-wrap::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 4px;
+    width: 40px;
+    background: linear-gradient(to right, transparent, var(--white));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .filters-wrap.has-overflow::after { opacity: 1; }
+
   .filters {
     display: flex;
     gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 48px;
     overflow-x: auto;
     padding-bottom: 4px;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .filters::-webkit-scrollbar { display: none; }
 
   .filter-btn {
     flex-shrink: 0;
@@ -753,28 +771,47 @@
   .card-info {
     padding: 16px 0;
     background: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .card-name {
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 0.3px;
-    margin-bottom: 6px;
     font-weight: 400;
     color: var(--black);
+    line-height: 1.3;
   }
 
   .card-meta {
     font-size: 11px;
     color: var(--grey-500);
     letter-spacing: 0.3px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
 
   .card-price {
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 400;
     color: var(--black);
+    letter-spacing: 0.5px;
+  }
+
+  /* Mobile size chips - always visible under photo */
+  .card-mobile-sizes {
+    display: none;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .card-mobile-sizes span {
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    color: var(--grey-500);
+    padding: 2px 6px;
+    border: 1px solid var(--grey-100);
   }
 
   /* EMPTY STATE */
@@ -1453,6 +1490,291 @@
   }
 
   /* ===========================
+     FLOATING TELEGRAM CTA
+     =========================== */
+  .float-tg {
+    position: fixed;
+    bottom: 32px;
+    left: 32px;
+    background: var(--black);
+    color: var(--white);
+    padding: 14px 20px 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 90;
+    border-radius: 100px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    transition: all 0.3s var(--ease);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .float-tg.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .float-tg:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+  .float-tg svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+  }
+  .float-tg-close {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 22px;
+    height: 22px;
+    background: var(--white);
+    color: var(--black);
+    border-radius: 50%;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .float-tg:hover .float-tg-close { opacity: 1; }
+
+  /* ===========================
+     PROMO BAR with rotation
+     =========================== */
+  .promo-bar-rotator {
+    height: 18px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px;
+  }
+  .promo-bar-item {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+    transition: all 0.5s var(--ease-out);
+    white-space: nowrap;
+  }
+  .promo-bar-item.active {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+
+  /* ===========================
+     SKELETON LOADERS
+     =========================== */
+  @keyframes skeletonShine {
+    0% { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, var(--cream) 0%, #ebe6df 50%, var(--cream) 100%);
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    animation: skeletonShine 1.4s ease-in-out infinite;
+  }
+
+  .skeleton-card {
+    aspect-ratio: 3/4;
+    margin-bottom: 16px;
+  }
+  .skeleton-line {
+    height: 12px;
+    margin-bottom: 8px;
+    border-radius: 2px;
+  }
+  .skeleton-line.short { width: 60%; }
+  .skeleton-line.price { height: 22px; width: 30%; margin-top: 8px; }
+
+  /* ===========================
+     PRODUCT IMAGE GALLERY (Modal)
+     =========================== */
+  .modal-img-wrap {
+    position: relative;
+  }
+  .modal-img-zoom {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s;
+    z-index: 5;
+  }
+  .modal-img-zoom:hover { background: var(--white); transform: scale(1.05); }
+  .modal-img-zoom svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--black);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  /* ===========================
+     CONFIRMATION MODAL (after order)
+     =========================== */
+  .success-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .success-modal.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .success-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(6px);
+  }
+  .success-modal-box {
+    position: relative;
+    background: var(--white);
+    width: 100%;
+    max-width: 460px;
+    padding: 60px 40px 40px;
+    text-align: center;
+    transform: scale(0.95);
+    transition: transform 0.4s var(--ease-out);
+  }
+  .success-modal.open .success-modal-box { transform: scale(1); }
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+  }
+  .success-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+  }
+  .success-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 12px;
+  }
+  .success-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--grey-500);
+    margin-bottom: 32px;
+  }
+  .success-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .success-btn-primary {
+    background: var(--black);
+    color: var(--white);
+    padding: 14px 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .success-btn-primary:hover { background: var(--accent); }
+  .success-btn-secondary {
+    background: transparent;
+    color: var(--black);
+    padding: 12px 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid var(--grey-100);
+    transition: border-color 0.2s;
+  }
+  .success-btn-secondary:hover { border-color: var(--black); }
+
+  /* ===========================
+     SEARCH BAR (sticky in header)
+     =========================== */
+  .search-overlay {
+    position: fixed;
+    top: var(--promo-h);
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--grey-100);
+    padding: 16px 40px;
+    z-index: 99;
+    transform: translateY(-100%);
+    transition: transform 0.3s var(--ease-out);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+  .search-overlay.open {
+    transform: translateY(0);
+  }
+  .search-overlay-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 8px;
+  }
+  .search-overlay svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+  }
+  .search-overlay input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    padding: 6px 0;
+  }
+  .search-overlay-close {
+    color: var(--grey-500);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 8px;
+  }
+  .search-overlay-close:hover { color: var(--black); }
+
+  /* ===========================
      RESPONSIVE
      =========================== */
   @media (max-width: 1100px) {
@@ -1547,18 +1869,113 @@
       grid-template-columns: 1fr;
       max-height: 100vh;
       height: 100vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
     }
-    .modal-img { aspect-ratio: 4/5; max-height: 45vh; }
-    .modal-info { padding: 24px; }
+    .modal-img {
+      aspect-ratio: auto;
+      height: 50vh;
+      max-height: 50vh;
+      flex-shrink: 0;
+    }
+    .modal-info {
+      padding: 24px 20px 100px;
+    }
     .modal-title { font-size: 26px; }
     .modal-price { font-size: 26px; }
+    .modal-close {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+    }
+    .modal-form .submit-btn {
+      width: 100%;
+      justify-content: center;
+      font-size: 10px;
+    }
 
+    /* Sticky bottom CTA on mobile modal */
+    .modal-sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-top: 1px solid var(--grey-100);
+      padding: 12px 16px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      box-shadow: 0 -8px 24px rgba(0,0,0,0.08);
+      z-index: 5;
+    }
+    .modal-sticky-cta .stickyPrice {
+      font-family: var(--font-display);
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .modal-sticky-cta button {
+      flex: 1;
+      background: var(--black);
+      color: var(--white);
+      padding: 14px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Show mobile sizes always under photo */
+    .card-mobile-sizes {
+      display: flex;
+    }
+
+    /* Float Telegram repositioned on mobile */
+    .float-tg {
+      bottom: 80px;
+      left: 16px;
+      padding: 12px 16px 12px 14px;
+      font-size: 11px;
+    }
+    .float-tg-text { display: none; }
+    .float-tg.expanded .float-tg-text { display: inline; }
+
+    /* Wishlist count tighter on mobile */
+    .nav-count {
+      min-width: 14px;
+      height: 14px;
+      font-size: 8px;
+    }
+
+    /* Submit button full width on mobile */
+    .submit-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Search overlay mobile */
+    .search-overlay {
+      padding: 12px 16px;
+    }
+
+    /* Form checkbox better mobile */
+    .form-checkbox {
+      font-size: 11px;
+    }
+
+    /* Back-to-top above floating tg */
     .back-to-top {
-      bottom: 20px;
-      right: 20px;
+      bottom: 80px;
+      right: 16px;
       width: 40px;
       height: 40px;
     }
+
+    /* Success modal mobile */
+    .success-modal-box {
+      padding: 48px 24px 32px;
+    }
+    .success-title { font-size: 26px; }
   }
 
   /* Fade-in on scroll */
@@ -1576,7 +1993,23 @@
 <a href="#main" class="skip-link">Перейти до основного контенту</a>
 
 <!-- PROMO BAR -->
-<div class="promo-bar" role="banner">Безкоштовна доставка при замовленні від 2000 ₴</div>
+<div class="promo-bar" role="banner">
+  <div class="promo-bar-rotator" id="promoRotator">
+    <span class="promo-bar-item active">Безкоштовна доставка при замовленні від 2000 ₴</span>
+    <span class="promo-bar-item">Доставка Новою Поштою за 1–3 дні</span>
+    <span class="promo-bar-item">100% Viscose · Cotton · Sateen</span>
+    <span class="promo-bar-item">Розміри S — 4XL · Для всіх</span>
+  </div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-overlay-inner">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="search" id="searchOverlayInput" placeholder="Що шукаєте? (піжама, халат, шовк...)" aria-label="Пошук">
+    <button class="search-overlay-close" id="searchOverlayClose">Закрити</button>
+  </div>
+</div>
 
 <!-- SIDE MENU -->
 <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
@@ -1637,7 +2070,7 @@
 <!-- HERO -->
 <section class="hero" aria-label="Головна колекція">
   <article class="hero-slide" onclick="filterCategory('summer')">
-    <img src="products/summer-kimono-beach.jpg" alt="Літній кімоно-сет з яскравим принтом біля моря" fetchpriority="high" width="540" height="785">
+    <img src="summer-kimono-beach.jpg" alt="Літній кімоно-сет з яскравим принтом біля моря" fetchpriority="high" width="540" height="785">
     <div class="hero-caption">
       <div class="hero-eyebrow">Колекція 2025</div>
       <h1 class="hero-title">Літній<br>настрій</h1>
@@ -1649,7 +2082,7 @@
   </article>
 
   <article class="hero-slide" onclick="filterCategory('nightgowns')">
-    <img src="products/nightgown-chocolate-long.jpg" alt="Довга нічна сорочка шоколадного кольору" loading="eager" width="678" height="1000">
+    <img src="nightgown-chocolate-long.jpg" alt="Довга нічна сорочка шоколадного кольору" loading="eager" width="678" height="1000">
     <div class="hero-caption">
       <div class="hero-eyebrow">Елегантність</div>
       <h2 class="hero-title">Вечірній<br>шарм</h2>
@@ -1678,14 +2111,16 @@
     <div class="section-count"><span id="productCount">18</span> моделей</div>
   </div>
 
-  <div class="filters reveal" role="tablist">
-    <button class="filter-btn active" data-cat="all" role="tab" aria-selected="true">Все</button>
-    <button class="filter-btn" data-cat="pajamas" role="tab">Піжами</button>
-    <button class="filter-btn" data-cat="robes" role="tab">Халати</button>
-    <button class="filter-btn" data-cat="nightgowns" role="tab">Сорочки</button>
-    <button class="filter-btn" data-cat="maternity" role="tab">Для вагітних</button>
-    <button class="filter-btn" data-cat="plussize" role="tab">Plus Size</button>
-    <button class="filter-btn" data-cat="summer" role="tab">Літні</button>
+  <div class="filters-wrap reveal" id="filtersWrap">
+    <div class="filters" role="tablist" id="filtersBar">
+      <button class="filter-btn active" data-cat="all" role="tab" aria-selected="true">Все</button>
+      <button class="filter-btn" data-cat="pajamas" role="tab">Піжами</button>
+      <button class="filter-btn" data-cat="robes" role="tab">Халати</button>
+      <button class="filter-btn" data-cat="nightgowns" role="tab">Сорочки</button>
+      <button class="filter-btn" data-cat="maternity" role="tab">Для вагітних</button>
+      <button class="filter-btn" data-cat="plussize" role="tab">Plus Size</button>
+      <button class="filter-btn" data-cat="summer" role="tab">Літні</button>
+    </div>
   </div>
 
   <div class="grid" id="grid" role="list">
@@ -1705,7 +2140,7 @@
     </a>
   </div>
   <div class="editorial-img">
-    <img src="products/pajama-blue-floral.jpg" alt="Синя флоральна піжама на моделі в ретро-інтер'єрі" loading="lazy" width="571" height="1000">
+    <img src="pajama-blue-floral.jpg" alt="Синя флоральна піжама на моделі в ретро-інтер'єрі" loading="lazy" width="571" height="1000">
   </div>
 </section>
 
@@ -1753,8 +2188,17 @@
           <svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
         </div>
         <div>
-          <span class="channel-label">Telegram</span>
+          <span class="channel-label">Telegram · найшвидше</span>
           <span class="channel-text">@nevarri_ua</span>
+        </div>
+      </a>
+      <a href="https://wa.me/380000000000" class="channel" target="_blank" rel="noopener">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div>
+          <span class="channel-label">WhatsApp</span>
+          <span class="channel-text">+38 (000) 000 00 00</span>
         </div>
       </a>
       <a href="viber://chat?number=%2B380000000000" class="channel">
@@ -1810,7 +2254,7 @@
 
     <div class="form-group">
       <select id="fCat" name="category">
-        <option value=""></option>
+        <option value="">— оберіть —</option>
         <option>Піжамні комплекти</option>
         <option>Халати</option>
         <option>Нічні сорочки</option>
@@ -1861,18 +2305,19 @@
       </ul>
     </div>
     <div>
-      <div class="footer-col-title">Інформація</div>
+      <div class="footer-col-title">Допомога</div>
       <ul class="footer-links">
+        <li><a href="#contact">Замовити консультацію</a></li>
         <li><a href="#contact">Доставка та оплата</a></li>
-        <li><a href="#contact">Повернення</a></li>
-        <li><a href="#contact">Таблиця розмірів</a></li>
-        <li><a href="#contact">Контакти</a></li>
+        <li><a href="#contact">Питання щодо розміру</a></li>
+        <li><a href="https://t.me/nevarri_ua" target="_blank" rel="noopener">Написати в Telegram</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Ми у мережі</div>
       <ul class="footer-links">
         <li><a href="https://t.me/nevarri_ua" target="_blank" rel="noopener">Telegram</a></li>
+        <li><a href="https://wa.me/380000000000" target="_blank" rel="noopener">WhatsApp</a></li>
         <li><a href="viber://chat?number=+380000000000">Viber</a></li>
         <li><a href="https://instagram.com/nevarri.ua" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="mailto:hello@nevarri.com">Email</a></li>
@@ -1922,8 +2367,36 @@
         </button>
       </form>
     </div>
+    <!-- Sticky bottom CTA on mobile -->
+    <div class="modal-sticky-cta" id="modalStickyCta">
+      <div class="stickyPrice" id="stickyPrice"></div>
+      <button type="button" id="stickyOrderBtn">Замовити</button>
+    </div>
   </div>
 </div>
+
+<!-- SUCCESS MODAL after order -->
+<div class="success-modal" id="successModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="success-modal-backdrop" id="successBackdrop"></div>
+  <div class="success-modal-box">
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <h3 class="success-title">Дякуємо!</h3>
+    <p class="success-text" id="successText">Ваше замовлення прийнято. Ми зв'яжемось з вами протягом години в робочий час.</p>
+    <div class="success-actions">
+      <a href="https://t.me/nevarri_ua" target="_blank" rel="noopener" class="success-btn-primary">Написати в Telegram</a>
+      <button type="button" class="success-btn-secondary" id="successClose">Продовжити перегляд</button>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING TELEGRAM CTA -->
+<a href="https://t.me/nevarri_ua" class="float-tg" id="floatTg" target="_blank" rel="noopener" aria-label="Написати в Telegram">
+  <svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+  <span class="float-tg-text">Написати нам</span>
+  <button type="button" class="float-tg-close" onclick="event.preventDefault(); event.stopPropagation(); document.getElementById('floatTg').style.display='none'; sessionStorage.setItem('tgClosed','1')" aria-label="Сховати">✕</button>
+</a>
 
 <!-- TOAST -->
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1945,7 +2418,7 @@ const PRODUCTS = [
   {
     id: 1,
     cat: 'summer',
-    img: 'products/summer-kimono-beach.jpg',
+    img: 'summer-kimono-beach.jpg',
     name: 'Літній кімоно-сет',
     meta: '100% Viscose',
     price: 1890,
@@ -1955,7 +2428,7 @@ const PRODUCTS = [
   {
     id: 2,
     cat: 'nightgowns',
-    img: 'products/nightgown-chocolate-long.jpg',
+    img: 'nightgown-chocolate-long.jpg',
     name: 'Сорочка "Cacao"',
     meta: '94% Viscose · 6% Elastane',
     price: 1350,
@@ -1965,7 +2438,7 @@ const PRODUCTS = [
   {
     id: 3,
     cat: 'pajamas',
-    img: 'products/pajama-blue-floral.jpg',
+    img: 'pajama-blue-floral.jpg',
     name: 'Піжама "Botanica"',
     meta: '100% Viscose',
     price: 1290,
@@ -1975,7 +2448,7 @@ const PRODUCTS = [
   {
     id: 4,
     cat: 'pajamas',
-    img: 'products/pajama-pink-stripe-olivera.jpg',
+    img: 'pajama-pink-stripe-olivera.jpg',
     name: 'Піжама "Candy"',
     meta: 'Viscose · шорт-сет',
     price: 980,
@@ -1985,7 +2458,7 @@ const PRODUCTS = [
   {
     id: 5,
     cat: 'nightgowns',
-    img: 'products/nightgown-black-midi-lace.jpg',
+    img: 'nightgown-black-midi-lace.jpg',
     name: 'Сорочка "Noir"',
     meta: '94% Viscose · 6% Elastane',
     price: 1450,
@@ -1995,7 +2468,7 @@ const PRODUCTS = [
   {
     id: 6,
     cat: 'pajamas',
-    img: 'products/pajama-mint-plaid.jpg',
+    img: 'pajama-mint-plaid.jpg',
     name: 'Піжама "Mint Check"',
     meta: 'Viscose · брючний сет',
     price: 1050,
@@ -2005,7 +2478,7 @@ const PRODUCTS = [
   {
     id: 7,
     cat: 'pajamas',
-    img: 'products/pajama-grey-stripe-shorts.jpg',
+    img: 'pajama-grey-stripe-shorts.jpg',
     name: 'Піжама "Stripe"',
     meta: 'Viscose · шорт-сет',
     price: 890,
@@ -2015,7 +2488,7 @@ const PRODUCTS = [
   {
     id: 8,
     cat: 'pajamas',
-    img: 'products/pajama-leopard.jpg',
+    img: 'pajama-leopard.jpg',
     name: 'Піжама "Leo"',
     meta: 'Dokuma Saten',
     price: 1190,
@@ -2025,7 +2498,7 @@ const PRODUCTS = [
   {
     id: 9,
     cat: 'plussize',
-    img: 'products/pajama-plus-blue.jpg',
+    img: 'pajama-plus-blue.jpg',
     name: 'Піжама "Azure"',
     meta: 'Viscose · Plus Size',
     price: 1050,
@@ -2035,7 +2508,7 @@ const PRODUCTS = [
   {
     id: 10,
     cat: 'plussize',
-    img: 'products/pajama-plus-navy.jpg',
+    img: 'pajama-plus-navy.jpg',
     name: 'Піжама "Navy"',
     meta: '100% Cotton · Plus Size',
     price: 980,
@@ -2045,7 +2518,7 @@ const PRODUCTS = [
   {
     id: 11,
     cat: 'pajamas',
-    img: 'products/pajama-white-lavender.jpg',
+    img: 'pajama-white-lavender.jpg',
     name: 'Піжама "Lavande"',
     meta: 'Kaskorse · брючний сет',
     price: 1090,
@@ -2055,7 +2528,7 @@ const PRODUCTS = [
   {
     id: 12,
     cat: 'summer',
-    img: 'products/summer-peach-stars.jpg',
+    img: 'summer-peach-stars.jpg',
     name: 'Сет "Sea Stars"',
     meta: 'Cotton · шорт-сет',
     price: 750,
@@ -2065,7 +2538,7 @@ const PRODUCTS = [
   {
     id: 13,
     cat: 'summer',
-    img: 'products/summer-navy-cherries.jpg',
+    img: 'summer-navy-cherries.jpg',
     name: 'Сет "Cherry"',
     meta: 'Cotton · шорт-сет',
     price: 750,
@@ -2075,7 +2548,7 @@ const PRODUCTS = [
   {
     id: 14,
     cat: 'nightgowns',
-    img: 'products/nightgown-black-short-lace.jpg',
+    img: 'nightgown-black-short-lace.jpg',
     name: 'Сорочка "Mini Noir"',
     meta: 'Viscose · коротка з мереживом',
     price: 890,
@@ -2085,7 +2558,7 @@ const PRODUCTS = [
   {
     id: 15,
     cat: 'pajamas',
-    img: 'products/pajama-navy-pinstripe.jpg',
+    img: 'pajama-navy-pinstripe.jpg',
     name: 'Піжама "Pinstripe"',
     meta: 'Viscose · шорт-сет',
     price: 1190,
@@ -2095,7 +2568,7 @@ const PRODUCTS = [
   {
     id: 16,
     cat: 'robes',
-    img: 'products/robe-black-kimono.jpg',
+    img: 'robe-black-kimono.jpg',
     name: 'Халат "Kimono"',
     meta: 'Viscose · чорний',
     price: 1350,
@@ -2105,7 +2578,7 @@ const PRODUCTS = [
   {
     id: 17,
     cat: 'maternity',
-    img: 'products/maternity-grey-lace.jpg',
+    img: 'maternity-grey-lace.jpg',
     name: 'Сет "Mama Grey"',
     meta: '94% Viscose · халат + сорочка',
     price: 1490,
@@ -2115,7 +2588,7 @@ const PRODUCTS = [
   {
     id: 18,
     cat: 'maternity',
-    img: 'products/maternity-mint-lace.jpg',
+    img: 'maternity-mint-lace.jpg',
     name: 'Сет "Mama Mint"',
     meta: '94% Viscose · халат + сорочка',
     price: 1490,
@@ -2206,6 +2679,9 @@ function renderProducts() {
         <div class="card-name">${p.name}</div>
         <div class="card-meta">${p.meta}</div>
         <div class="card-price">${p.price.toLocaleString('uk-UA')} ₴</div>
+        <div class="card-mobile-sizes" aria-label="Доступні розміри">
+          ${p.sizes.map(s => `<span>${s}</span>`).join('')}
+        </div>
       </div>
     </article>
   `).join('');
@@ -2259,9 +2735,39 @@ searchInput.addEventListener('input', (e) => {
   }, 200);
 });
 
+// Search trigger — opens search overlay
 document.getElementById('searchTrigger').addEventListener('click', () => {
-  openMenu();
-  setTimeout(() => searchInput.focus(), 500);
+  const overlay = document.getElementById('searchOverlay');
+  overlay.classList.add('open');
+  setTimeout(() => document.getElementById('searchOverlayInput').focus(), 100);
+});
+
+document.getElementById('searchOverlayClose').addEventListener('click', () => {
+  document.getElementById('searchOverlay').classList.remove('open');
+});
+
+// Search in overlay
+let overlaySearchTimer;
+document.getElementById('searchOverlayInput').addEventListener('input', (e) => {
+  clearTimeout(overlaySearchTimer);
+  overlaySearchTimer = setTimeout(() => {
+    searchQuery = e.target.value.toLowerCase().trim();
+    renderProducts();
+    if (searchQuery) {
+      document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 200);
+});
+
+// Sync search inputs
+const sideMenuSearch = document.getElementById('searchInput');
+const overlaySearch = document.getElementById('searchOverlayInput');
+[sideMenuSearch, overlaySearch].forEach(input => {
+  input.addEventListener('input', (e) => {
+    [sideMenuSearch, overlaySearch].forEach(other => {
+      if (other !== e.target) other.value = e.target.value;
+    });
+  });
 });
 
 // ============================================================
@@ -2316,26 +2822,43 @@ document.getElementById('wishToggle').addEventListener('click', () => {
     showToast('В обраному порожньо');
     return;
   }
-  // Filter to show only wishlist items
-  const originalFilter = currentFilter;
-  grid.innerHTML = PRODUCTS.filter(p => wishlist.includes(p.id)).map(p => `
-    <article class="card" role="listitem" data-id="${p.id}">
-      <div class="card-img" onclick="openProductModal(${p.id})">
-        <img src="${p.img}" alt="${p.name}" loading="lazy">
-        <button class="wish-btn active" onclick="event.stopPropagation(); toggleWish(${p.id}, this); this.closest('.card').remove()" aria-label="Видалити з обраного">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </button>
+  // Show wishlist items as full cards
+  const wishItems = PRODUCTS.filter(p => wishlist.includes(p.id));
+  grid.innerHTML = `
+    <div style="grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; padding: 8px 0 24px; border-bottom: 1px solid var(--grey-100); margin-bottom: 8px;">
+      <div>
+        <div class="section-eyebrow">Ваше обране</div>
+        <div style="font-family: var(--font-display); font-size: 24px; font-style: italic;">${wishItems.length} ${wishItems.length === 1 ? 'товар' : wishItems.length < 5 ? 'товари' : 'товарів'}</div>
       </div>
-      <div class="card-info">
-        <div class="card-name">${p.name}</div>
-        <div class="card-meta">${p.meta}</div>
-        <div class="card-price">${p.price.toLocaleString('uk-UA')} ₴</div>
-      </div>
-    </article>
-  `).join('');
+      <button onclick="filterCategory('all')" style="font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 20px; border: 1px solid var(--black); transition: all 0.2s;" onmouseover="this.style.background='var(--black)';this.style.color='var(--white)'" onmouseout="this.style.background='';this.style.color=''">← До каталогу</button>
+    </div>
+    ${wishItems.map(p => `
+      <article class="card" role="listitem" data-id="${p.id}">
+        <div class="card-img" onclick="openProductModal(${p.id})">
+          <img src="${p.img}" alt="${p.name} — ${p.meta}" loading="lazy">
+          <div class="card-badges">
+            ${p.badges.map(b => `<span class="badge ${b === 'new' || b === 'hit' ? 'accent' : b === 'plus' ? 'plus' : ''}">${BADGE_NAMES[b]}</span>`).join('')}
+          </div>
+          <button class="wish-btn active" onclick="event.stopPropagation(); toggleWish(${p.id}, this); this.closest('.card').remove(); if(document.querySelectorAll('.card').length===0) filterCategory('all')" aria-label="Видалити з обраного">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <div class="card-quick">
+            ${p.sizes.map(s => `<span class="size-chip" onclick="event.stopPropagation(); openProductModal(${p.id}, '${s}')">${s}</span>`).join('')}
+          </div>
+        </div>
+        <div class="card-info">
+          <div class="card-name">${p.name}</div>
+          <div class="card-meta">${p.meta}</div>
+          <div class="card-price">${p.price.toLocaleString('uk-UA')} ₴</div>
+          <div class="card-mobile-sizes">${p.sizes.map(s => `<span>${s}</span>`).join('')}</div>
+        </div>
+      </article>
+    `).join('')}
+  `;
   productCount.textContent = wishlist.length;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
+  closeMenu();
 });
 
 // ============================================================
@@ -2355,6 +2878,9 @@ function openProductModal(id, preselectedSize) {
   document.getElementById('modalMeta').textContent = p.meta;
   document.getElementById('modalPrice').textContent = p.price.toLocaleString('uk-UA') + ' ₴';
 
+  // Sticky CTA on mobile
+  document.getElementById('stickyPrice').textContent = p.price.toLocaleString('uk-UA') + ' ₴';
+
   const sizeHtml = p.sizes.map(s => `
     <button type="button" class="size-option ${selectedSize === s ? 'selected' : ''}" data-size="${s}">${s}</button>
   `).join('');
@@ -2365,13 +2891,37 @@ function openProductModal(id, preselectedSize) {
       document.querySelectorAll('.size-option').forEach(o => o.classList.remove('selected'));
       opt.classList.add('selected');
       selectedSize = opt.dataset.size;
+      updateOrderButton();
     });
   });
+
+  // Reset form fields when opening
+  document.getElementById('modalForm').reset();
+  updateOrderButton();
 
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 }
+
+function updateOrderButton() {
+  const btnSpan = document.querySelector('#modalForm .submit-btn span');
+  const stickyBtn = document.getElementById('stickyOrderBtn');
+  if (!btnSpan || !currentProduct) return;
+  if (selectedSize) {
+    btnSpan.textContent = `Замовити · ${selectedSize}`;
+    if (stickyBtn) stickyBtn.textContent = `Замовити · ${selectedSize}`;
+  } else {
+    btnSpan.textContent = 'Замовити';
+    if (stickyBtn) stickyBtn.textContent = 'Замовити';
+  }
+}
+
+// Sticky CTA — scroll to form on click
+document.getElementById('stickyOrderBtn').addEventListener('click', () => {
+  document.getElementById('mName').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => document.getElementById('mName').focus(), 300);
+});
 
 function closeModal() {
   modal.classList.remove('open');
@@ -2413,17 +2963,44 @@ function validateForm(form) {
 }
 
 async function submitToChannel(data) {
-  // PRODUCTION: Replace this with actual Formspree/Telegram bot endpoint
-  // Example for Formspree:
-  // return fetch('https://formspree.io/f/YOUR_FORM_ID', {
+  // ============================================================
+  // ЯК НАЛАШТУВАТИ РЕАЛЬНУ ВІДПРАВКУ ЗАЯВОК
+  // ============================================================
+  //
+  // ВАРІАНТ 1 — FormSubmit (без реєстрації, на email):
+  // 1. Заміни 'YOUR_EMAIL' на свій email (наприклад mom@gmail.com)
+  // 2. Розкоментуй блок нижче
+  // 3. Перший раз відправ форму — на email прийде підтвердження (один раз)
+  //
+  // const FORM_EMAIL = 'YOUR_EMAIL@gmail.com';
+  // const formData = new FormData();
+  // Object.entries(data).forEach(([k, v]) => formData.append(k, v));
+  // formData.append('_subject', `🛍 Нове замовлення NEVARRI: ${data.product || data.category || 'консультація'}`);
+  // formData.append('_template', 'table');
+  // formData.append('_captcha', 'false');
+  // const r = await fetch(`https://formsubmit.co/${FORM_EMAIL}`, { method: 'POST', body: formData });
+  // if (!r.ok) throw new Error('Submit failed');
+  // return r;
+  //
+  // ВАРІАНТ 2 — Telegram-бот (миттєво в Telegram):
+  // 1. Напиши @BotFather → /newbot → отримай TOKEN
+  // 2. Дізнайся свій chat_id у @userinfobot
+  // 3. Заміни TOKEN та CHAT_ID нижче і розкоментуй
+  //
+  // const TOKEN = 'YOUR_BOT_TOKEN';
+  // const CHAT_ID = 'YOUR_CHAT_ID';
+  // const text = `🛍 *Нове замовлення NEVARRI*\n\n` +
+  //   Object.entries(data).filter(([,v]) => v).map(([k,v]) => `*${k}:* ${v}`).join('\n');
+  // const r = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
   //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-  //   body: JSON.stringify(data)
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ chat_id: CHAT_ID, text, parse_mode: 'Markdown' })
   // });
+  // if (!r.ok) throw new Error('Submit failed');
+  // return r;
 
-  // For now — simulate successful submit
-  // The real form will POST to your backend
-  console.log('ORDER DATA:', data);
+  // Поки заготовка — лог в консоль (мама налаштує канал пізніше):
+  console.log('📧 ORDER DATA:', data);
   return new Promise(resolve => setTimeout(resolve, 800));
 }
 
@@ -2453,8 +3030,8 @@ document.getElementById('orderForm').addEventListener('submit', async (e) => {
 
   try {
     await submitToChannel(data);
-    showToast('Заявку отримано — зв\'яжемось найближчим часом');
     form.reset();
+    showSuccessModal('Дякуємо за вашу заявку! Ми зв\'яжемось з вами протягом години в робочий час. Якщо терміново — пишіть в Telegram.');
   } catch (err) {
     showToast('Помилка відправки. Напишіть нам в Telegram', 'error');
   } finally {
@@ -2496,9 +3073,9 @@ document.getElementById('modalForm').addEventListener('submit', async (e) => {
 
   try {
     await submitToChannel(data);
-    showToast('Замовлення прийнято — зв\'яжемось з вами');
     form.reset();
     closeModal();
+    showSuccessModal(`Замовлення на «${currentProduct.name}» прийнято. Ми зв'яжемось з вами для підтвердження доставки та оплати.`);
   } catch (err) {
     showToast('Помилка. Напишіть нам в Telegram', 'error');
   } finally {
@@ -2583,8 +3160,77 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeMenu();
     closeModal();
+    closeSuccessModal();
+    document.getElementById('searchOverlay').classList.remove('open');
   }
 });
+
+// ============================================================
+// PROMO BAR ROTATOR
+// ============================================================
+function initPromoRotator() {
+  const items = document.querySelectorAll('.promo-bar-item');
+  if (items.length < 2) return;
+  let current = 0;
+  setInterval(() => {
+    items[current].classList.remove('active');
+    current = (current + 1) % items.length;
+    items[current].classList.add('active');
+  }, 4000);
+}
+
+// ============================================================
+// FILTER OVERFLOW DETECTION
+// ============================================================
+function initFilterOverflow() {
+  const wrap = document.getElementById('filtersWrap');
+  const bar = document.getElementById('filtersBar');
+  if (!wrap || !bar) return;
+
+  const checkOverflow = () => {
+    const hasOverflow = bar.scrollWidth > bar.clientWidth;
+    const isAtEnd = bar.scrollLeft + bar.clientWidth >= bar.scrollWidth - 4;
+    wrap.classList.toggle('has-overflow', hasOverflow && !isAtEnd);
+  };
+
+  checkOverflow();
+  bar.addEventListener('scroll', checkOverflow, { passive: true });
+  window.addEventListener('resize', checkOverflow, { passive: true });
+}
+
+// ============================================================
+// SUCCESS MODAL
+// ============================================================
+const successModal = document.getElementById('successModal');
+
+function showSuccessModal(text) {
+  if (text) document.getElementById('successText').textContent = text;
+  successModal.classList.add('open');
+  successModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSuccessModal() {
+  successModal.classList.remove('open');
+  successModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('successClose').addEventListener('click', closeSuccessModal);
+document.getElementById('successBackdrop').addEventListener('click', closeSuccessModal);
+
+// ============================================================
+// FLOATING TELEGRAM — show after delay
+// ============================================================
+function initFloatingTg() {
+  if (sessionStorage.getItem('tgClosed') === '1') {
+    document.getElementById('floatTg').style.display = 'none';
+    return;
+  }
+  setTimeout(() => {
+    document.getElementById('floatTg').classList.add('visible');
+  }, 4000);
+}
 
 // ============================================================
 // INIT
@@ -2592,11 +3238,20 @@ document.addEventListener('keydown', (e) => {
 buildTicker();
 renderProducts();
 updateWishCount();
+initPromoRotator();
+initFilterOverflow();
+initFloatingTg();
+
+// Re-check filter overflow after fonts load
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(initFilterOverflow);
+}
 
 // Make functions globally accessible for inline handlers
 window.filterCategory = filterCategory;
 window.openProductModal = openProductModal;
 window.toggleWish = toggleWish;
+window.closeSuccessModal = closeSuccessModal;
 </script>
 </body>
 </html>
