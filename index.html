@@ -440,58 +440,78 @@
     height: calc(100vh - var(--header-h) - var(--promo-h));
     min-height: 560px;
     max-height: 900px;
+    overflow: hidden;
   }
 
   .hero-slide {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    background: var(--cream);
   }
 
   .hero-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-    transition: transform 1s var(--ease-out);
+    object-position: center top;
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    display: block;
   }
-
   .hero-slide:hover img { transform: scale(1.04); }
 
+  /* Градиент — плавный снизу для читаемости */
   .hero-slide::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%);
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.58) 0%,
+      rgba(0,0,0,0.18) 42%,
+      transparent 68%
+    );
     pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Тонкий разделитель между слайдами */
+  .hero-slide:first-child::before {
+    content: '';
+    position: absolute;
+    right: 0; top: 15%; bottom: 15%;
+    width: 1px;
+    background: rgba(255,255,255,0.18);
+    z-index: 3;
   }
 
   .hero-caption {
     position: absolute;
-    bottom: 48px;
+    bottom: 52px;
     left: 48px;
     right: 48px;
     color: var(--white);
     z-index: 2;
-    max-width: 400px;
   }
 
   .hero-eyebrow {
     font-size: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
     margin-bottom: 12px;
-    opacity: 0.85;
+    opacity: 0.72;
     font-weight: 400;
   }
 
   .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(36px, 5vw, 56px);
+    font-size: clamp(40px, 5vw, 64px);
     font-weight: 300;
-    line-height: 1.05;
+    line-height: 1.0;
     font-style: italic;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.18);
   }
 
   .hero-btn {
@@ -499,16 +519,20 @@
     align-items: center;
     gap: 10px;
     padding: 14px 28px;
-    border: 1px solid var(--white);
+    border: 1px solid rgba(255,255,255,0.65);
     color: var(--white);
     font-size: 10px;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    transition: all 0.3s var(--ease);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.07);
+    transition: all 0.35s var(--ease);
   }
   .hero-btn:hover {
     background: var(--white);
     color: var(--black);
+    border-color: var(--white);
   }
   .hero-btn svg {
     width: 14px;
@@ -517,6 +541,7 @@
     stroke-width: 1.5;
     fill: none;
     transition: transform 0.3s;
+    flex-shrink: 0;
   }
   .hero-btn:hover svg { transform: translateX(4px); }
 
@@ -2175,14 +2200,24 @@
       max-height: none;
     }
     .hero-slide {
-      height: 70vw;
-      min-height: 360px;
-      max-height: 560px;
+      height: 75vw;
+      min-height: 400px;
+      max-height: 600px;
     }
+    /* Убираем разделитель на мобильном */
+    .hero-slide:first-child::before { display: none; }
     .hero-caption {
-      bottom: 32px;
-      left: 24px;
-      right: 24px;
+      bottom: 28px;
+      left: 20px;
+      right: 20px;
+    }
+    .hero-title {
+      font-size: clamp(32px, 8vw, 48px);
+      margin-bottom: 20px;
+    }
+    .hero-btn {
+      padding: 12px 22px;
+      font-size: 9px;
     }
 
     .ticker-item { font-size: 15px; }
@@ -2488,11 +2523,18 @@
 
 <!-- HERO -->
 <section class="hero" aria-label="Головна колекція">
-  <article class="hero-slide" onclick="filterCategory('summer')">
-    <img src="set-red-lace-camisole.jpg" alt="Червоний шовковий сет з мереживом" fetchpriority="high" width="891" height="1000">
+  <article class="hero-slide" onclick="filterCategory('pajamas')">
+    <img
+      src="hero-leopard.jpg"
+      alt="Піжама леопардовий принт — Olivera преміум якість"
+      fetchpriority="high"
+      decoding="async"
+      width="1058"
+      height="1200"
+    >
     <div class="hero-caption">
-      <div class="hero-eyebrow">Нова колекція</div>
-      <h1 class="hero-title">Відчуй<br>себе</h1>
+      <div class="hero-eyebrow">Колекція 2025</div>
+      <h1 class="hero-title">Ваш<br>стиль<br>вдома</h1>
       <a href="#catalog" class="hero-btn">
         Переглянути
         <svg viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
@@ -2500,11 +2542,18 @@
     </div>
   </article>
 
-  <article class="hero-slide" onclick="filterCategory('pajamas')">
-    <img src="pajama-floral-mauve.jpg" alt="Ніжна флоральна піжама рожево-лілова" loading="eager" width="591" height="1000">
+  <article class="hero-slide" onclick="filterCategory('nightgowns')">
+    <img
+      src="hero-red-lace.jpg"
+      alt="Червоний шовковий сет з мереживом — елегантний та ніжний"
+      loading="eager"
+      decoding="async"
+      width="960"
+      height="1080"
+    >
     <div class="hero-caption">
-      <div class="hero-eyebrow">Преміум якість</div>
-      <h2 class="hero-title">Ранковий<br>ритуал</h2>
+      <div class="hero-eyebrow">Преміум Viscose</div>
+      <h2 class="hero-title">Відчуй<br>себе</h2>
       <a href="#catalog" class="hero-btn">
         Дивитись
         <svg viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
@@ -2559,7 +2608,7 @@
     </a>
   </div>
   <div class="editorial-img">
-    <img src="pajama-black-lace-set.jpg" alt="Чорна піжама з мереживом — елегантність і комфорт" loading="lazy" width="710" height="1000">
+    <img src="hero-white-lavender.jpg" alt="Піжама квіткова Olivera — м'яка та елегантна" loading="lazy" width="1138" height="1200">
   </div>
 </section>
 
