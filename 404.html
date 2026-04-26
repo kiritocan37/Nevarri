@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="robots" content="noindex">
+<title>404 — Сторінку не знайдено · NEVARRI</title>
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='64' font-family='Georgia' font-size='42' fill='%23fafaf8' text-anchor='middle' font-style='italic'%3EN%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #fafaf8;
+    --cream: #f4f1ec;
+    --grey: #6b6b6b;
+    --accent: #b8956a;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    background: var(--white);
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .promo-bar {
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 10px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  header {
+    padding: 20px 40px;
+    border-bottom: 1px solid #e8e5e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 8px;
+    text-decoration: none;
+    color: var(--black);
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .content {
+    max-width: 540px;
+  }
+
+  .number {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(120px, 20vw, 220px);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--grey);
+    margin-bottom: 40px;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-primary {
+    background: var(--black);
+    color: var(--white);
+  }
+  .btn-primary:hover {
+    background: var(--accent);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--black);
+    border: 1px solid #e8e5e0;
+  }
+  .btn-secondary:hover {
+    border-color: var(--black);
+  }
+
+  .btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    transition: transform 0.3s;
+  }
+  .btn:hover svg { transform: translateX(4px); }
+
+  footer {
+    padding: 24px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--grey);
+    letter-spacing: 1px;
+    background: var(--cream);
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 16px 20px; }
+    .logo { font-size: 20px; letter-spacing: 6px; }
+    .actions { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="promo-bar">Безкоштовна доставка від 2000 ₴</div>
+
+<header>
+  <a href="/" class="logo">NEVARRI</a>
+</header>
+
+<main>
+  <div class="content">
+    <div class="number">404</div>
+    <h1 class="title">Загубилися?</h1>
+    <p class="text">
+      Сторінка яку ви шукаєте не існує або була переміщена. Не біда — поверніться на головну та продовжуйте шопінг.
+    </p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">
+        На головну
+        <svg viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+      </a>
+      <a href="/?cat=pajamas" class="btn btn-secondary">
+        Каталог
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>© 2025 NEVARRI · Одеса · Україна</footer>
+
+</body>
+</html>

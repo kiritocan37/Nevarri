@@ -2,26 +2,37 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light">
 <meta name="description" content="NEVARRI — домашній одяг преміум якості. Піжами, халати, нічні сорочки з Туреччини. Доставка по всій Україні Новою Поштою.">
 <meta name="keywords" content="домашній одяг, піжами, халати, нічні сорочки, одяг для вагітних, plus size, турецький одяг, NEVARRI">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="NEVARRI">
+<meta name="format-detection" content="telephone=no">
+
+<!-- Content Security Policy (базовая защита) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://api.telegram.org; frame-ancestors 'none';">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="NEVARRI">
 <meta property="og:url" content="https://nevarri.vercel.app/">
 <meta property="og:title" content="NEVARRI — Домашній одяг преміум якості">
 <meta property="og:description" content="Піжами, халати, нічні сорочки. Турецька якість — українська ціна.">
-<meta property="og:image" content="https://nevarri.vercel.app/summer-kimono-beach.jpg">
+<meta property="og:image" content="https://nevarri.vercel.app/hero-leopard.jpg">
+<meta property="og:image:width" content="1058">
+<meta property="og:image:height" content="1200">
+<meta property="og:image:alt" content="NEVARRI — преміум домашній одяг">
 <meta property="og:locale" content="uk_UA">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NEVARRI — Домашній одяг">
 <meta name="twitter:description" content="Піжами, халати, нічні сорочки преміум якості з Туреччини.">
-<meta name="twitter:image" content="https://nevarri.vercel.app/summer-kimono-beach.jpg">
+<meta name="twitter:image" content="https://nevarri.vercel.app/hero-leopard.jpg">
+<meta name="twitter:image:alt" content="NEVARRI — преміум домашній одяг">
 
 <!-- Canonical -->
 <link rel="canonical" href="https://nevarri.vercel.app/">
@@ -31,24 +42,37 @@
 <!-- Favicon (inline SVG, zero extra request) -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='64' font-family='Georgia' font-size='42' fill='%23fafaf8' text-anchor='middle' font-style='italic'%3EN%3C/text%3E%3C/svg%3E">
 
-<!-- Preconnect to Google Fonts for faster loading -->
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NEVARRI">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- DNS prefetch + Preconnect для шрифтов -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Preload hero image for LCP -->
-<link rel="preload" as="image" href="summer-kimono-beach.jpg" fetchpriority="high">
+<!-- Preload hero фото для LCP (WebP с JPG fallback через type) -->
+<link rel="preload" as="image" href="hero-leopard.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="hero-red-lace.webp" type="image/webp">
 
 <!-- Fonts: Cormorant Garamond for display, Jost for body -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- Schema.org structured data -->
+<!-- Schema.org structured data — Organization -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ClothingStore",
   "name": "NEVARRI",
-  "description": "Магазин домашнього одягу преміум якості з Туреччини",
+  "alternateName": "Nevarri Home",
+  "description": "Магазин преміум домашнього одягу з Туреччини. Піжами, халати, нічні сорочки.",
   "url": "https://nevarri.vercel.app",
+  "logo": "https://nevarri.vercel.app/icon-512.png",
+  "image": "https://nevarri.vercel.app/hero-leopard.jpg",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "UA",
@@ -56,9 +80,14 @@
   },
   "currenciesAccepted": "UAH",
   "paymentAccepted": "Готівка, Банківська картка, Нова Пошта (накладений платіж)",
-  "priceRange": "₴₴"
+  "priceRange": "₴₴",
+  "sameAs": [
+    "https://t.me/nevarri_ua",
+    "https://instagram.com/nevarri.ua"
+  ]
 }
 </script>
+
 
 <style>
   /* ===========================
@@ -2177,6 +2206,695 @@
   }
 
   /* ===========================
+     SORT DROPDOWN
+     =========================== */
+  .sort-wrap {
+    position: relative;
+    margin-left: auto;
+  }
+  .sort-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid var(--grey-100);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: border-color 0.2s;
+    background: var(--white);
+  }
+  .sort-btn:hover { border-color: var(--black); }
+  .sort-btn svg {
+    width: 12px; height: 12px;
+    stroke: currentColor; fill: none; stroke-width: 1.5;
+    transition: transform 0.2s;
+  }
+  .sort-btn.open svg { transform: rotate(180deg); }
+
+  .sort-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background: var(--white);
+    border: 1px solid var(--grey-100);
+    min-width: 220px;
+    z-index: 50;
+    display: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .sort-menu.open { display: block; }
+
+  .sort-option {
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+    border-bottom: 1px solid var(--grey-100);
+  }
+  .sort-option:last-child { border-bottom: none; }
+  .sort-option:hover { background: var(--cream); }
+  .sort-option.active {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  /* ===========================
+     PRODUCT BADGES + DISCOUNT
+     =========================== */
+  .badge.sale {
+    background: var(--error);
+    color: var(--white);
+  }
+
+  .price-block {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .price-old {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--grey-500);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+  .price-discount {
+    font-size: 11px;
+    color: var(--error);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  /* Stock counter */
+  .stock-low {
+    font-size: 11px;
+    color: var(--error);
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .stock-low::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--error);
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Brand tag */
+  .card-brand {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    margin-bottom: 4px;
+  }
+
+  /* ===========================
+     FAQ ACCORDION
+     =========================== */
+  .faq-section {
+    padding: 80px var(--gutter);
+    background: var(--white);
+  }
+
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .faq-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    margin-bottom: 8px;
+  }
+  .faq-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--grey-100);
+  }
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+  .faq-question:hover { color: var(--accent); }
+  .faq-question .plus {
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--accent);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .faq-item.open .faq-question .plus { transform: rotate(45deg); }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s var(--ease-out);
+  }
+  .faq-item.open .faq-answer {
+    max-height: 400px;
+  }
+  .faq-answer-inner {
+    padding: 0 0 24px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--grey-500);
+    max-width: 700px;
+  }
+
+  /* ===========================
+     SHIPPING / INFO BLOCKS
+     =========================== */
+  .info-section {
+    padding: 80px var(--gutter);
+    background: var(--cream);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .info-card {
+    background: var(--white);
+    padding: 36px 32px;
+    transition: transform 0.3s var(--ease);
+  }
+  .info-card:hover { transform: translateY(-4px); }
+
+  .info-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 24px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+  }
+  .info-icon svg {
+    width: 100%; height: 100%;
+    stroke: currentColor; fill: none; stroke-width: 1;
+  }
+
+  .info-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+
+  .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .info-list li {
+    padding: 8px 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--grey-500);
+    position: relative;
+    padding-left: 16px;
+  }
+  .info-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ===========================
+     REVIEWS / TESTIMONIALS
+     =========================== */
+  .reviews-section {
+    padding: 80px var(--gutter);
+    background: var(--white);
+  }
+
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .reviews-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    margin-bottom: 8px;
+  }
+  .reviews-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  .reviews-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .reviews-stars {
+    color: var(--accent);
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  .reviews-rating-text {
+    font-size: 13px;
+    color: var(--grey-500);
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .review-card {
+    background: var(--cream);
+    padding: 36px 32px;
+    position: relative;
+  }
+  .review-card::before {
+    content: '"';
+    position: absolute;
+    top: 8px;
+    right: 28px;
+    font-family: var(--font-display);
+    font-size: 100px;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.15;
+  }
+
+  .review-stars {
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .review-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--grey-900);
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--grey-100);
+    padding-top: 16px;
+  }
+  .review-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-style: italic;
+    flex-shrink: 0;
+  }
+  .review-name {
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .review-date {
+    font-size: 11px;
+    color: var(--grey-500);
+  }
+
+  /* ===========================
+     RELATED PRODUCTS in modal
+     =========================== */
+  .modal-related {
+    grid-column: 1 / -1;
+    padding: 40px;
+    border-top: 1px solid var(--grey-100);
+  }
+  .modal-related-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .modal-related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .modal-related-card {
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .modal-related-card:hover { opacity: 0.85; }
+  .modal-related-img {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: var(--cream);
+    margin-bottom: 8px;
+  }
+  .modal-related-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    transition: transform 0.5s var(--ease-out);
+  }
+  .modal-related-card:hover .modal-related-img img {
+    transform: scale(1.05);
+  }
+  .modal-related-name {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  .modal-related-price {
+    font-family: var(--font-display);
+    font-size: 14px;
+  }
+
+  /* ===========================
+     SIZE CHART MODAL
+     =========================== */
+  .size-chart-link {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 4px 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-left: auto;
+  }
+  .size-chart-link:hover { color: var(--black); }
+
+  .size-chart-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 350;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .size-chart-modal.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .size-chart-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,10,0.6);
+    backdrop-filter: blur(4px);
+  }
+  .size-chart-box {
+    position: relative;
+    background: var(--white);
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px;
+  }
+  .size-chart-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 22px;
+    padding: 6px;
+  }
+  .size-chart-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .size-chart-subtitle {
+    font-size: 12px;
+    color: var(--grey-500);
+    margin-bottom: 24px;
+  }
+
+  .size-chart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+  }
+  .size-chart-table th,
+  .size-chart-table td {
+    padding: 12px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--grey-100);
+    font-size: 13px;
+  }
+  .size-chart-table th {
+    background: var(--cream);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    font-weight: 400;
+  }
+  .size-chart-table td:first-child {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  .size-chart-tip {
+    background: var(--cream);
+    padding: 16px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--grey-500);
+    border-left: 2px solid var(--accent);
+  }
+
+  /* ===========================
+     CARE INSTRUCTIONS
+     =========================== */
+  .care-section {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--grey-100);
+  }
+  .care-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    margin-bottom: 12px;
+  }
+  .care-icons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .care-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--grey-100);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--grey-500);
+  }
+  .care-icon[title]:hover {
+    border-color: var(--black);
+    color: var(--black);
+  }
+
+  /* ===========================
+     LOCATION / MAP
+     =========================== */
+  .location-section {
+    padding: 80px var(--gutter);
+    background: var(--cream);
+  }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .location-info h2 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .location-info p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--grey-500);
+    margin-bottom: 24px;
+    max-width: 400px;
+  }
+  .location-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .location-detail {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .location-detail-icon {
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .location-detail-icon svg {
+    width: 18px; height: 18px;
+    stroke: currentColor; fill: none; stroke-width: 1.5;
+  }
+  .location-detail-text {
+    font-size: 13px;
+    color: var(--grey-900);
+    line-height: 1.5;
+  }
+  .location-detail-text strong {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .location-map {
+    aspect-ratio: 4/3;
+    background: var(--white);
+    border: 1px solid var(--grey-100);
+    overflow: hidden;
+    position: relative;
+  }
+  .location-map iframe,
+  .location-map .map-placeholder {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .map-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--grey-500);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+  }
+  .map-placeholder svg {
+    width: 48px; height: 48px;
+    stroke: var(--accent); fill: none; stroke-width: 1;
+    margin-bottom: 16px;
+  }
+
+  /* ===========================
+     COOKIE BANNER (мини)
+     =========================== */
+  .cookie-banner {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    max-width: 480px;
+    background: var(--white);
+    border: 1px solid var(--grey-100);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    padding: 20px 24px;
+    z-index: 95;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transform: translateY(120%);
+    transition: transform 0.5s var(--ease-out);
+  }
+  .cookie-banner.visible {
+    transform: translateY(0);
+  }
+  .cookie-text {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--grey-500);
+    flex: 1;
+  }
+  .cookie-text a {
+    color: var(--black);
+    text-decoration: underline;
+  }
+  .cookie-btn {
+    background: var(--black);
+    color: var(--white);
+    padding: 10px 20px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .cookie-btn:hover { background: var(--accent); }
+
+  /* ===========================
      RESPONSIVE
      =========================== */
   @media (max-width: 1100px) {
@@ -2403,6 +3121,49 @@
     .search-suggestions { margin-top: 12px; }
     .search-result-img { width: 48px; height: 64px; }
     .search-results { max-height: 60vh; }
+
+    /* Sort menu mobile */
+    .sort-wrap { width: 100%; margin-left: 0; margin-top: 12px; }
+    .sort-btn { width: 100%; justify-content: space-between; }
+    .sort-menu { left: 0; right: 0; min-width: auto; }
+
+    /* FAQ mobile */
+    .faq-section { padding: 56px 16px; }
+    .faq-question { font-size: 14px; padding: 18px 0; }
+
+    /* Info cards mobile */
+    .info-section { padding: 56px 16px; }
+    .info-grid { grid-template-columns: 1fr; gap: 16px; }
+    .info-card { padding: 28px 24px; }
+
+    /* Reviews mobile */
+    .reviews-section { padding: 56px 16px; }
+    .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
+    .review-card { padding: 28px 24px; }
+
+    /* Related products mobile */
+    .modal-related { padding: 24px 20px; }
+    .modal-related-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .modal-related-name { font-size: 11px; }
+    .modal-related-price { font-size: 13px; }
+
+    /* Size chart mobile */
+    .size-chart-box { padding: 28px 20px; }
+    .size-chart-table th,
+    .size-chart-table td { padding: 10px 4px; font-size: 12px; }
+
+    /* Location mobile */
+    .location-section { padding: 56px 16px; }
+    .location-grid { grid-template-columns: 1fr; gap: 32px; }
+    .location-map { aspect-ratio: 4/3; }
+
+    /* Cookie banner mobile */
+    .cookie-banner {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 16px 20px;
+    }
+    .cookie-btn { width: 100%; }
   }
 
   /* Fade-in on scroll */
@@ -2524,14 +3285,7 @@
 <!-- HERO -->
 <section class="hero" aria-label="Головна колекція">
   <article class="hero-slide" onclick="filterCategory('pajamas')">
-    <img
-      src="hero-leopard.jpg"
-      alt="Піжама леопардовий принт — Olivera преміум якість"
-      fetchpriority="high"
-      decoding="async"
-      width="1058"
-      height="1200"
-    >
+    <picture><source srcset="hero-leopard.webp" type="image/webp"><img src="hero-leopard.jpg" alt="Піжама леопардовий принт — Olivera преміум якість" width="1058" height="1200" fetchpriority="high" decoding="async"></picture>
     <div class="hero-caption">
       <div class="hero-eyebrow">Колекція 2025</div>
       <h1 class="hero-title">Ваш<br>стиль<br>вдома</h1>
@@ -2543,14 +3297,7 @@
   </article>
 
   <article class="hero-slide" onclick="filterCategory('nightgowns')">
-    <img
-      src="hero-red-lace.jpg"
-      alt="Червоний шовковий сет з мереживом — елегантний та ніжний"
-      loading="eager"
-      decoding="async"
-      width="960"
-      height="1080"
-    >
+    <picture><source srcset="hero-red-lace.webp" type="image/webp"><img src="hero-red-lace.jpg" alt="Червоний шовковий сет з мереживом — елегантний та ніжний" width="960" height="1080" loading="eager" decoding="async"></picture>
     <div class="hero-caption">
       <div class="hero-eyebrow">Преміум Viscose</div>
       <h2 class="hero-title">Відчуй<br>себе</h2>
@@ -2589,6 +3336,19 @@
       <button class="filter-btn" data-cat="plussize" role="tab">Plus Size</button>
       <button class="filter-btn" data-cat="summer" role="tab">Літні</button>
     </div>
+    <div class="sort-wrap">
+      <button class="sort-btn" id="sortBtn" aria-haspopup="true" aria-expanded="false">
+        <span id="sortLabel">Сортувати</span>
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="sort-menu" id="sortMenu" role="menu">
+        <button class="sort-option active" data-sort="default" role="menuitem">За замовчуванням</button>
+        <button class="sort-option" data-sort="new" role="menuitem">Спочатку новинки</button>
+        <button class="sort-option" data-sort="price-asc" role="menuitem">Дешевші спочатку</button>
+        <button class="sort-option" data-sort="price-desc" role="menuitem">Дорожчі спочатку</button>
+        <button class="sort-option" data-sort="sale" role="menuitem">Зі знижкою</button>
+      </div>
+    </div>
   </div>
 
   <div class="grid" id="grid" role="list">
@@ -2608,7 +3368,7 @@
     </a>
   </div>
   <div class="editorial-img">
-    <img src="hero-white-lavender.jpg" alt="Піжама квіткова Olivera — м'яка та елегантна" loading="lazy" width="1138" height="1200">
+    <picture><source srcset="hero-white-lavender.webp" type="image/webp"><img src="hero-white-lavender.jpg" alt="Піжама квіткова Olivera — м'яка та елегантна" width="1138" height="1200" loading="lazy" decoding="async"></picture>
   </div>
 </section>
 
@@ -2641,6 +3401,262 @@
     </div>
     <h3 class="feature-title">Розміри S — 4XL</h3>
     <p class="feature-desc">Для кожної жінки — свій розмір</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section reveal" id="reviews" aria-label="Відгуки клієнтів">
+  <div class="reviews-header">
+    <div class="reviews-eyebrow">Що кажуть клієнтки</div>
+    <h2 class="reviews-title">Відгуки</h2>
+    <div class="reviews-rating">
+      <span class="reviews-stars" aria-label="4.9 з 5">★★★★★</span>
+      <span class="reviews-rating-text">4.9 / 5 · понад 50 задоволених клієнток</span>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+    <article class="review-card">
+      <div class="review-stars" aria-label="5 з 5">★★★★★</div>
+      <p class="review-text">Замовила піжаму "Leo" — тканина просто шовкова, прохолодна, ідеально сидить. Доставка прийшла за 2 дні. Вже придивляюсь до халата!</p>
+      <div class="review-author">
+        <div class="review-avatar">А</div>
+        <div>
+          <div class="review-name">Анна, Київ</div>
+          <div class="review-date">12 січня 2025</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="review-card">
+      <div class="review-stars" aria-label="5 з 5">★★★★★</div>
+      <p class="review-text">Замовила сорочку "Bordeaux" в подарунок мамі на день народження — вона в захваті! Якість віскози супер, кольори насичені. Дякую NEVARRI за сервіс!</p>
+      <div class="review-author">
+        <div class="review-avatar">М</div>
+        <div>
+          <div class="review-name">Марія, Львів</div>
+          <div class="review-date">5 січня 2025</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="review-card">
+      <div class="review-stars" aria-label="5 з 5">★★★★★</div>
+      <p class="review-text">Я Plus Size 3XL, завжди важко знайти красивий домашній одяг. Тут знайшла 2 піжами які ідеально сіли. Швидко відповіли в Telegram, все підказали.</p>
+      <div class="review-author">
+        <div class="review-avatar">О</div>
+        <div>
+          <div class="review-name">Олена, Одеса</div>
+          <div class="review-date">28 грудня 2024</div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- INFO: Доставка / Оплата / Повернення -->
+<section class="info-section reveal" id="shipping" aria-label="Доставка та оплата">
+  <div class="info-grid">
+    <article class="info-card">
+      <div class="info-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <h3 class="info-title">Доставка</h3>
+      <ul class="info-list">
+        <li>Нова Пошта по всій Україні</li>
+        <li>Термін: 1–3 робочі дні</li>
+        <li>Вартість: 60–100 ₴ (залежить від ваги)</li>
+        <li>Безкоштовно при замовленні від 2000 ₴</li>
+        <li>Самовивіз з точки в Одесі — безкоштовно</li>
+      </ul>
+    </article>
+
+    <article class="info-card">
+      <div class="info-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
+      <h3 class="info-title">Оплата</h3>
+      <ul class="info-list">
+        <li>Накладений платіж (при отриманні)</li>
+        <li>Передоплата на банківську картку</li>
+        <li>Готівка при самовивозі</li>
+        <li>Усі платежі — безпечні та офіційні</li>
+        <li>Чек / накладна з кожним замовленням</li>
+      </ul>
+    </article>
+
+    <article class="info-card">
+      <div class="info-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+      </div>
+      <h3 class="info-title">Повернення</h3>
+      <ul class="info-list">
+        <li>Повернення протягом 14 днів</li>
+        <li>Товар має бути у вихідному стані</li>
+        <li>З бирками та упаковкою</li>
+        <li>Гроші повертаємо на картку 3-5 днів</li>
+        <li>Або обмінюємо на інший розмір/колір</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section reveal" id="faq" aria-label="Часті питання">
+  <div class="faq-container">
+    <div class="faq-header">
+      <div class="faq-eyebrow">Допомога</div>
+      <h2 class="faq-title">Часті питання</h2>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Як обрати правильний розмір?
+        <span class="plus" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          В кожному товарі є посилання "Таблиця розмірів" — натисніть і побачите параметри грудей, талії та стегон для кожного розміру. Якщо ви між розмірами — рекомендуємо взяти більший для більшого комфорту вдома. Якщо сумніваєтесь — напишіть нам в Telegram, ми порадимо.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Скільки коштує доставка?
+        <span class="plus" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Доставка Новою Поштою по Україні зазвичай 60–100 ₴ (залежить від ваги). При замовленні від 2000 ₴ доставка безкоштовна. Якщо ви в Одесі — можете забрати самовивозом без оплати доставки.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Чи можна повернути товар, якщо не підійшов розмір?
+        <span class="plus" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Так, маєте 14 днів на повернення з моменту отримання. Товар має бути в первісному стані — з бирками, без слідів використання. Гроші повертаємо на картку протягом 3-5 робочих днів. Або обмінюємо на інший розмір — це швидше.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        З яких тканин ваш одяг?
+        <span class="plus" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Ми працюємо тільки з преміальними тканинами турецьких виробників: 100% віскоза, 100% бавовна, преміум сатин, муслін з бавовни, kaskorse. Усі тканини мають сертифікат OEKO-TEX Standard 100 — це означає що вони гіпоалергенні та безпечні навіть для дітей.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Як прати домашній одяг з віскози?
+        <span class="plus" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Віскоза любить дбайливе прання: на делікатному режимі при температурі 30°C, без віджимання або з мінімальними обертами. Не вибілювати, прасувати на середньому режимі. Після прання — повісити на плічках або розіслати горизонтально, щоб не деформувалось. Якщо доглядати правильно — служитиме роками.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Що робити якщо немає мого розміру?
+        <span class="plus" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Напишіть нам в Telegram або Instagram — ми зробимо запит до постачальника. Якщо розмір є в наявності — привезе його за 7–14 днів. Якщо вам терміново — порадимо схожий товар з потрібним розміром.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Чи безпечно платити заздалегідь?
+        <span class="plus" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Так. Якщо ви боїтесь — використовуйте накладений платіж (платите при отриманні в Новій Пошті). Це 100% безпечно. Передоплата зазвичай вигідніша — іноді даємо знижку 5%. Усі платежі офіційні, чек надсилаємо після оплати.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION (точка на ринку) -->
+<section class="location-section reveal" id="location" aria-label="Адреса нашої точки">
+  <div class="location-grid">
+    <div class="location-info">
+      <h2>Завітайте<br>до нас</h2>
+      <p>Якщо ви в Одесі — приходьте подивитись та приміряти товар наживо. Мама особисто розкаже про кожну модель та допоможе обрати ідеальний розмір.</p>
+
+      <div class="location-details">
+        <div class="location-detail">
+          <span class="location-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span class="location-detail-text">
+            <strong>Адреса</strong>
+            м. Одеса, ринок «7 кілометр»<br>
+            (точна адреса оновлюється)
+          </span>
+        </div>
+        <div class="location-detail">
+          <span class="location-detail-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </span>
+          <span class="location-detail-text">
+            <strong>Графік роботи</strong>
+            Пн—Сб: 8:00 — 17:00<br>
+            Нд: вихідний
+          </span>
+        </div>
+        <div class="location-detail">
+          <span class="location-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="location-detail-text">
+            <strong>Перед візитом</strong>
+            Зателефонуйте або напишіть<br>
+            щоб уточнити наявність товару
+          </span>
+        </div>
+      </div>
+
+      <a href="#contact" class="editorial-btn" style="border-color: var(--black); color: var(--black);">
+        Зв'язатись
+        <svg viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="location-map">
+      <div class="map-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <strong style="font-size: 14px; margin-bottom: 8px; color: var(--black);">м. Одеса</strong>
+        <span>Карта з'явиться коли буде<br>точна адреса торгової точки</span>
+      </div>
+      <!-- Когда будет адрес — раскоментировать и вставить ссылку:
+      <iframe
+        src="https://www.google.com/maps/embed?pb=..."
+        loading="lazy"
+        allowfullscreen=""
+        referrerpolicy="no-referrer-when-downgrade"
+        title="NEVARRI на карті"
+      ></iframe>
+      -->
+    </div>
   </div>
 </section>
 
@@ -2775,9 +3791,10 @@
     <div>
       <div class="footer-col-title">Допомога</div>
       <ul class="footer-links">
-        <li><a href="#contact">Замовити консультацію</a></li>
-        <li><a href="#contact">Доставка та оплата</a></li>
-        <li><a href="#contact">Питання щодо розміру</a></li>
+        <li><a href="#faq">Часті питання</a></li>
+        <li><a href="#shipping">Доставка та оплата</a></li>
+        <li><a href="#reviews">Відгуки клієнтів</a></li>
+        <li><a href="#location">Точка в Одесі</a></li>
         <li><a href="https://t.me/nevarri_ua" target="_blank" rel="noopener">Написати в Telegram</a></li>
       </ul>
     </div>
@@ -2804,7 +3821,10 @@
   <div class="modal-box">
     <button class="modal-close" id="modalClose" aria-label="Закрити">✕</button>
     <div class="modal-img">
-      <img id="modalImg" src="" alt="">
+      <picture>
+        <source id="modalImgWebp" srcset="" type="image/webp">
+        <img id="modalImg" src="" alt="" decoding="async" width="600" height="800">
+      </picture>
     </div>
     <div class="modal-info">
       <div class="modal-eyebrow" id="modalCat"></div>
@@ -2835,6 +3855,8 @@
         </button>
       </form>
     </div>
+    <!-- Related products -->
+    <div class="modal-related" id="modalRelated"></div>
     <!-- Sticky bottom CTA on mobile -->
     <div class="modal-sticky-cta" id="modalStickyCta">
       <div class="stickyPrice" id="stickyPrice"></div>
@@ -2866,6 +3888,46 @@
   <button type="button" class="float-tg-close" onclick="event.preventDefault(); event.stopPropagation(); document.getElementById('floatTg').style.display='none'; sessionStorage.setItem('tgClosed','1')" aria-label="Сховати">✕</button>
 </a>
 
+<!-- SIZE CHART MODAL -->
+<div class="size-chart-modal" id="sizeChartModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sizeChartTitle">
+  <div class="size-chart-backdrop" id="sizeChartBackdrop"></div>
+  <div class="size-chart-box">
+    <button class="size-chart-close" id="sizeChartClose" aria-label="Закрити">✕</button>
+    <h3 class="size-chart-title" id="sizeChartTitle">Таблиця розмірів</h3>
+    <p class="size-chart-subtitle">Параметри в сантиметрах · домашній одяг</p>
+
+    <table class="size-chart-table">
+      <thead>
+        <tr>
+          <th>Розмір</th>
+          <th>Груди</th>
+          <th>Талія</th>
+          <th>Стегна</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>S</td><td>84–88</td><td>64–68</td><td>90–94</td></tr>
+        <tr><td>M</td><td>88–92</td><td>68–72</td><td>94–98</td></tr>
+        <tr><td>L</td><td>92–96</td><td>72–76</td><td>98–102</td></tr>
+        <tr><td>XL</td><td>96–100</td><td>76–82</td><td>102–106</td></tr>
+        <tr><td>2XL</td><td>100–106</td><td>82–88</td><td>106–112</td></tr>
+        <tr><td>3XL</td><td>106–112</td><td>88–94</td><td>112–118</td></tr>
+        <tr><td>4XL</td><td>112–118</td><td>94–100</td><td>118–124</td></tr>
+      </tbody>
+    </table>
+
+    <div class="size-chart-tip">
+      <strong style="color: var(--black);">Порада:</strong> Якщо ви між розмірами — оберіть більший. Домашній одяг має бути комфортним, не обтягуючим. У сумнівах — напишіть нам в Telegram, ми порадимо.
+    </div>
+  </div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookies">
+  <p class="cookie-text">Цей сайт використовує cookies для зручності та аналітики. <a href="#faq">Дізнатись більше</a></p>
+  <button class="cookie-btn" id="cookieAccept">Зрозуміло</button>
+</div>
+
 <!-- TOAST -->
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -2893,6 +3955,8 @@ const PRODUCTS = [
     price: 1090,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: ['new', 'hit']
+    brand: 'Olivera',
+    stock: 1,
   },
   {
     id: 8,
@@ -2903,6 +3967,8 @@ const PRODUCTS = [
     price: 1190,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: ['hit']
+    brand: 'Olivera',
+    stock: 2,
   },
   {
     id: 30,
@@ -2913,6 +3979,7 @@ const PRODUCTS = [
     price: 1390,
     sizes: ['S', 'M', 'L', 'XL', '2XL'],
     badges: ['new']
+    brand: 'Catherine\'s',
   },
   {
     id: 26,
@@ -2923,6 +3990,7 @@ const PRODUCTS = [
     price: 1190,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: ['hit']
+    brand: 'Edze',
   },
   {
     id: 27,
@@ -2933,6 +4001,8 @@ const PRODUCTS = [
     price: 1250,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: ['new']
+    brand: 'Ангеліна',
+    stock: 3,
   },
   {
     id: 28,
@@ -2943,6 +4013,7 @@ const PRODUCTS = [
     price: 1250,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Ангеліна',
   },
   {
     id: 11,
@@ -2953,6 +4024,7 @@ const PRODUCTS = [
     price: 1090,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Olivera',
   },
   {
     id: 4,
@@ -2963,6 +4035,7 @@ const PRODUCTS = [
     price: 980,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Olivera',
   },
   {
     id: 7,
@@ -2973,6 +4046,8 @@ const PRODUCTS = [
     price: 890,
     sizes: ['M', 'L', 'XL', '2XL'],
     badges: ['hit']
+    brand: 'Olivera',
+    oldPrice: 1190,
   },
   {
     id: 19,
@@ -2983,6 +4058,7 @@ const PRODUCTS = [
     price: 890,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: ['new']
+    brand: 'Penye Mood',
   },
   {
     id: 6,
@@ -2993,6 +4069,7 @@ const PRODUCTS = [
     price: 1050,
     sizes: ['M', 'L', 'XL', '2XL'],
     badges: []
+    brand: 'Olivera',
   },
   {
     id: 9,
@@ -3003,6 +4080,7 @@ const PRODUCTS = [
     price: 1050,
     sizes: ['2XL', '3XL', '4XL'],
     badges: ['plus']
+    brand: 'Olivera',
   },
   {
     id: 10,
@@ -3013,6 +4091,7 @@ const PRODUCTS = [
     price: 980,
     sizes: ['2XL', '3XL', '4XL'],
     badges: ['plus']
+    brand: 'Olivera',
   },
   // === РЕШТА ===
   {
@@ -3024,6 +4103,8 @@ const PRODUCTS = [
     price: 1890,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: ['new']
+    brand: 'Olivera',
+    stock: 2,
   },
   {
     id: 2,
@@ -3034,6 +4115,7 @@ const PRODUCTS = [
     price: 1350,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Penye Mood',
   },
   {
     id: 3,
@@ -3044,6 +4126,7 @@ const PRODUCTS = [
     price: 1290,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Catherine\'s',
   },
   {
     id: 5,
@@ -3054,6 +4137,7 @@ const PRODUCTS = [
     price: 1450,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Penye Mood',
   },
   {
     id: 12,
@@ -3064,6 +4148,7 @@ const PRODUCTS = [
     price: 750,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Mariposa',
   },
   {
     id: 13,
@@ -3074,6 +4159,8 @@ const PRODUCTS = [
     price: 750,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Mariposa',
+    oldPrice: 990,
   },
   {
     id: 14,
@@ -3084,6 +4171,8 @@ const PRODUCTS = [
     price: 890,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Penye Mood',
+    oldPrice: 1090,
   },
   {
     id: 15,
@@ -3094,6 +4183,7 @@ const PRODUCTS = [
     price: 1190,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Penye Mood',
   },
   {
     id: 16,
@@ -3104,6 +4194,7 @@ const PRODUCTS = [
     price: 1350,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Penye Mood',
   },
   {
     id: 17,
@@ -3114,6 +4205,7 @@ const PRODUCTS = [
     price: 1490,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Catherine\'s',
   },
   {
     id: 18,
@@ -3124,6 +4216,7 @@ const PRODUCTS = [
     price: 1490,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: ['new']
+    brand: 'Penye Mood',
   },
   {
     id: 20,
@@ -3134,6 +4227,8 @@ const PRODUCTS = [
     price: 890,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Penye Mood',
+    oldPrice: 1090,
   },
   {
     id: 21,
@@ -3144,6 +4239,7 @@ const PRODUCTS = [
     price: 1190,
     sizes: ['S', 'M', 'L', 'XL', '2XL'],
     badges: ['new']
+    brand: 'Penye Mood',
   },
   {
     id: 23,
@@ -3154,6 +4250,7 @@ const PRODUCTS = [
     price: 990,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Catherine\'s',
   },
   {
     id: 24,
@@ -3164,6 +4261,8 @@ const PRODUCTS = [
     price: 990,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: []
+    brand: 'Penye Mood',
+    oldPrice: 1290,
   },
   {
     id: 25,
@@ -3174,6 +4273,7 @@ const PRODUCTS = [
     price: 990,
     sizes: ['S', 'M', 'L', 'XL'],
     badges: ['new']
+    brand: 'Catherine\'s',
   },
   {
     id: 29,
@@ -3184,6 +4284,7 @@ const PRODUCTS = [
     price: 1590,
     sizes: ['S', 'M', 'L', 'XL', '2XL'],
     badges: ['new']
+    brand: 'Ангеліна',
   }
 ];
 const CAT_NAMES = {
@@ -3207,6 +4308,7 @@ const BADGE_NAMES = {
 // ============================================================
 let wishlist = [];
 let currentFilter = 'all';
+let currentSort = 'default';
 let searchQuery = '';
 let currentProduct = null;
 let selectedSize = null;
@@ -3230,14 +4332,34 @@ const toast = document.getElementById('toast');
 // RENDER PRODUCTS
 // ============================================================
 function renderProducts() {
-  const filtered = PRODUCTS.filter(p => {
+  let filtered = PRODUCTS.filter(p => {
     const matchCat = currentFilter === 'all' || p.cat === currentFilter;
     const matchSearch = !searchQuery ||
       p.name.toLowerCase().includes(searchQuery) ||
       p.meta.toLowerCase().includes(searchQuery) ||
+      (p.brand && p.brand.toLowerCase().includes(searchQuery)) ||
       CAT_NAMES[p.cat].toLowerCase().includes(searchQuery);
     return matchCat && matchSearch;
   });
+
+  // Sorting
+  if (currentSort === 'new') {
+    filtered = filtered.slice().sort((a, b) => {
+      const aNew = (a.badges || []).includes('new') ? 1 : 0;
+      const bNew = (b.badges || []).includes('new') ? 1 : 0;
+      return bNew - aNew;
+    });
+  } else if (currentSort === 'price-asc') {
+    filtered = filtered.slice().sort((a, b) => a.price - b.price);
+  } else if (currentSort === 'price-desc') {
+    filtered = filtered.slice().sort((a, b) => b.price - a.price);
+  } else if (currentSort === 'sale') {
+    filtered = filtered.slice().sort((a, b) => {
+      const aSale = a.oldPrice ? 1 : 0;
+      const bSale = b.oldPrice ? 1 : 0;
+      return bSale - aSale;
+    });
+  }
 
   if (filtered.length === 0) {
     grid.innerHTML = `
@@ -3250,12 +4372,26 @@ function renderProducts() {
     return;
   }
 
-  grid.innerHTML = filtered.map(p => `
+  grid.innerHTML = filtered.map(p => {
+    const webp = p.img.replace('.jpg', '.webp');
+    const hasDiscount = p.oldPrice && p.oldPrice > p.price;
+    const discountPct = hasDiscount ? Math.round((1 - p.price/p.oldPrice) * 100) : 0;
+    const badges = [...(p.badges || [])];
+    if (hasDiscount && !badges.includes('sale')) badges.push('sale');
+
+    return `
     <article class="card" role="listitem" data-id="${p.id}">
       <div class="card-img" onclick="openProductModal(${p.id})">
-        <img src="${p.img}" alt="${p.name} — ${p.meta}" loading="lazy">
+        <picture>
+          <source srcset="${webp}" type="image/webp">
+          <img src="${p.img}" alt="${p.name} — ${p.meta}" loading="lazy" decoding="async" width="600" height="800">
+        </picture>
         <div class="card-badges">
-          ${p.badges.map(b => `<span class="badge ${b === 'new' || b === 'hit' ? 'accent' : b === 'plus' ? 'plus' : ''}">${BADGE_NAMES[b]}</span>`).join('')}
+          ${badges.map(b => {
+            const cls = b === 'sale' ? 'sale' : (b === 'new' || b === 'hit' ? 'accent' : (b === 'plus' ? 'plus' : ''));
+            const label = b === 'sale' ? `-${discountPct}%` : BADGE_NAMES[b];
+            return `<span class="badge ${cls}">${label}</span>`;
+          }).join('')}
         </div>
         <button class="wish-btn ${wishlist.includes(p.id) ? 'active' : ''}" onclick="event.stopPropagation(); toggleWish(${p.id}, this)" aria-label="В обране">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -3265,15 +4401,20 @@ function renderProducts() {
         </div>
       </div>
       <div class="card-info">
+        ${p.brand ? `<div class="card-brand">${p.brand}</div>` : ''}
         <div class="card-name">${p.name}</div>
         <div class="card-meta">${p.meta}</div>
-        <div class="card-price">${p.price.toLocaleString('uk-UA')} ₴</div>
+        <div class="price-block">
+          <div class="card-price">${p.price.toLocaleString('uk-UA')} ₴</div>
+          ${hasDiscount ? `<span class="price-old">${p.oldPrice.toLocaleString('uk-UA')} ₴</span>` : ''}
+        </div>
+        ${p.stock && p.stock <= 3 ? `<div class="stock-low">Залишилось ${p.stock} шт</div>` : ''}
         <div class="card-mobile-sizes" aria-label="Доступні розміри">
           ${p.sizes.map(s => `<span>${s}</span>`).join('')}
         </div>
       </div>
     </article>
-  `).join('');
+  `}).join('');
 
   productCount.textContent = filtered.length;
 }
@@ -3383,7 +4524,10 @@ function renderSearchSuggestions(query) {
       html += `<div class="search-results">`;
       html += results.map(p => `
         <div class="search-result-item" onclick="closeSearchOverlay(); openProductModal(${p.id})">
-          <img src="${p.img}" alt="${p.name}" class="search-result-img" loading="lazy">
+          <picture>
+            <source srcset="${p.img.replace('.jpg', '.webp')}" type="image/webp">
+            <img src="${p.img}" alt="${p.name}" class="search-result-img" loading="lazy" decoding="async">
+          </picture>
           <div class="search-result-info">
             <div class="search-result-name">${p.name}</div>
             <div class="search-result-meta">${p.meta}</div>
@@ -3623,7 +4767,10 @@ function renderWishDrawer() {
 
   list.innerHTML = items.map(p => `
     <div class="wish-item" data-id="${p.id}">
-      <img src="${p.img}" alt="${p.name}" class="wish-item-img" onclick="closeWishDrawer(); openProductModal(${p.id})">
+      <picture>
+        <source srcset="${p.img.replace('.jpg', '.webp')}" type="image/webp">
+        <img src="${p.img}" alt="${p.name}" class="wish-item-img" loading="lazy" decoding="async" onclick="closeWishDrawer(); openProductModal(${p.id})">
+      </picture>
       <div class="wish-item-info">
         <div class="wish-item-name" onclick="closeWishDrawer(); openProductModal(${p.id})">${p.name}</div>
         <div class="wish-item-meta">${p.meta}</div>
@@ -3680,18 +4827,57 @@ function openProductModal(id, preselectedSize) {
 
   document.getElementById('modalImg').src = p.img;
   document.getElementById('modalImg').alt = p.name;
-  document.getElementById('modalCat').textContent = CAT_NAMES[p.cat];
+  document.getElementById('modalImgWebp').srcset = p.img.replace('.jpg', '.webp');
+
+  // Cat + brand
+  const catText = p.brand
+    ? `${CAT_NAMES[p.cat]} · ${p.brand}`
+    : CAT_NAMES[p.cat];
+  document.getElementById('modalCat').textContent = catText;
+
   document.getElementById('modalTitle').textContent = p.name;
   document.getElementById('modalMeta').textContent = p.meta;
-  document.getElementById('modalPrice').textContent = p.price.toLocaleString('uk-UA') + ' ₴';
+
+  // Price with optional old price
+  const hasDiscount = p.oldPrice && p.oldPrice > p.price;
+  const discountPct = hasDiscount ? Math.round((1 - p.price / p.oldPrice) * 100) : 0;
+  let priceHtml = `${p.price.toLocaleString('uk-UA')} ₴`;
+  if (hasDiscount) {
+    priceHtml += ` <span style="font-size: 16px; color: var(--grey-500); text-decoration: line-through; margin-left: 12px;">${p.oldPrice.toLocaleString('uk-UA')} ₴</span>`;
+    priceHtml += ` <span style="font-size: 12px; color: var(--error); margin-left: 8px;">−${discountPct}%</span>`;
+  }
+  if (p.stock && p.stock <= 3) {
+    priceHtml += `<div style="font-size: 11px; color: var(--error); margin-top: 8px; letter-spacing: 0.5px;">⚠ Залишилось ${p.stock} шт</div>`;
+  }
+  document.getElementById('modalPrice').innerHTML = priceHtml;
 
   // Sticky CTA on mobile
   document.getElementById('stickyPrice').textContent = p.price.toLocaleString('uk-UA') + ' ₴';
 
+  // Sizes
   const sizeHtml = p.sizes.map(s => `
     <button type="button" class="size-option ${selectedSize === s ? 'selected' : ''}" data-size="${s}">${s}</button>
   `).join('');
   document.getElementById('sizeSelector').innerHTML = sizeHtml;
+
+  // Add Size Chart link if not already
+  const sizeSection = document.getElementById('sizeSelector').closest('.modal-info');
+  let sizeChartLink = sizeSection.querySelector('.size-chart-link');
+  if (!sizeChartLink) {
+    sizeChartLink = document.createElement('button');
+    sizeChartLink.type = 'button';
+    sizeChartLink.className = 'size-chart-link';
+    sizeChartLink.textContent = 'Таблиця розмірів';
+    sizeChartLink.onclick = openSizeChart;
+    // Insert after section title "Розмір"
+    const sectionTitle = sizeSection.querySelector('.modal-section-title');
+    if (sectionTitle) {
+      sectionTitle.style.display = 'flex';
+      sectionTitle.style.alignItems = 'center';
+      sectionTitle.style.justifyContent = 'space-between';
+      sectionTitle.appendChild(sizeChartLink);
+    }
+  }
 
   document.querySelectorAll('.size-option').forEach(opt => {
     opt.addEventListener('click', () => {
@@ -3702,13 +4888,39 @@ function openProductModal(id, preselectedSize) {
     });
   });
 
+  // Care section (under form)
+  let careSection = sizeSection.querySelector('.care-section');
+  if (!careSection) {
+    careSection = document.createElement('div');
+    careSection.className = 'care-section';
+    careSection.innerHTML = `
+      <div class="care-title">Догляд</div>
+      <div class="care-icons">
+        <span class="care-icon" title="Прання при 30°C">30°</span>
+        <span class="care-icon" title="Не вибілювати">⊘</span>
+        <span class="care-icon" title="Прасувати на середньому">▲</span>
+        <span class="care-icon" title="Не сушити в машинці">⊜</span>
+        <span class="care-icon" title="Делікатне прання">✿</span>
+      </div>
+    `;
+    const form = sizeSection.querySelector('#modalForm');
+    if (form) form.before(careSection);
+  }
+
   // Reset form fields when opening
   document.getElementById('modalForm').reset();
   updateOrderButton();
 
+  // Render related products
+  renderRelatedProducts(p);
+
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+
+  // Scroll modal to top
+  const modalBox = modal.querySelector('.modal-box');
+  if (modalBox) modalBox.scrollTop = 0;
 }
 
 function updateOrderButton() {
@@ -3807,7 +5019,10 @@ async function submitToChannel(data) {
   // return r;
 
   // Поки заготовка — лог в консоль (мама налаштує канал пізніше):
-  console.log('📧 ORDER DATA:', data);
+  // Лог только в development (localhost)
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    console.log('📧 ORDER DATA:', data);
+  }
   return new Promise(resolve => setTimeout(resolve, 800));
 }
 
@@ -3970,6 +5185,7 @@ document.addEventListener('keydown', (e) => {
     closeSuccessModal();
     closeWishDrawer();
     closeSearchOverlay();
+    closeSizeChart();
   }
 });
 
@@ -4065,6 +5281,205 @@ function initFloatingTg() {
 }
 
 // ============================================================
+// GLOBAL ERROR HANDLER (защита от падения сайта)
+// ============================================================
+window.addEventListener('error', (e) => {
+  // Only log in development
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    console.error('Global error:', e.error);
+  }
+  // Не блокируем сайт — продолжаем работу
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    console.error('Unhandled promise rejection:', e.reason);
+  }
+  // Предотвращаем default error в консоли в production
+  e.preventDefault();
+});
+
+// ============================================================
+// SORT DROPDOWN
+// ============================================================
+const SORT_LABELS = {
+  'default': 'Сортувати',
+  'new': 'Спочатку новинки',
+  'price-asc': 'Дешевші спочатку',
+  'price-desc': 'Дорожчі спочатку',
+  'sale': 'Зі знижкою'
+};
+
+function initSort() {
+  const sortBtn = document.getElementById('sortBtn');
+  const sortMenu = document.getElementById('sortMenu');
+  const sortLabel = document.getElementById('sortLabel');
+
+  if (!sortBtn) return;
+
+  sortBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = sortMenu.classList.toggle('open');
+    sortBtn.classList.toggle('open', isOpen);
+    sortBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!sortMenu.contains(e.target) && !sortBtn.contains(e.target)) {
+      sortMenu.classList.remove('open');
+      sortBtn.classList.remove('open');
+      sortBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.querySelectorAll('.sort-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      currentSort = opt.dataset.sort;
+      document.querySelectorAll('.sort-option').forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      sortLabel.textContent = SORT_LABELS[currentSort];
+      sortMenu.classList.remove('open');
+      sortBtn.classList.remove('open');
+      renderProducts();
+    });
+  });
+}
+
+// ============================================================
+// FAQ ACCORDION
+// ============================================================
+function initFAQ() {
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      // Close others (если хочешь — раскомментируй для accordion-эффекта)
+      // document.querySelectorAll('.faq-item').forEach(other => {
+      //   if (other !== item) other.classList.remove('open');
+      // });
+    });
+  });
+}
+
+// ============================================================
+// SIZE CHART MODAL
+// ============================================================
+const sizeChartModal = document.getElementById('sizeChartModal');
+
+function openSizeChart() {
+  sizeChartModal.classList.add('open');
+  sizeChartModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSizeChart() {
+  sizeChartModal.classList.remove('open');
+  sizeChartModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('sizeChartClose')?.addEventListener('click', closeSizeChart);
+document.getElementById('sizeChartBackdrop')?.addEventListener('click', closeSizeChart);
+
+// ============================================================
+// COOKIE BANNER
+// ============================================================
+function initCookieBanner() {
+  if (localStorage.getItem('nevarri_cookies_accepted')) return;
+  const banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+  setTimeout(() => banner.classList.add('visible'), 1500);
+  document.getElementById('cookieAccept')?.addEventListener('click', () => {
+    localStorage.setItem('nevarri_cookies_accepted', '1');
+    banner.classList.remove('visible');
+  });
+}
+
+// ============================================================
+// RELATED PRODUCTS (в модалке)
+// ============================================================
+function getRelatedProducts(currentProduct, limit = 3) {
+  const others = PRODUCTS.filter(p =>
+    p.id !== currentProduct.id &&
+    (p.cat === currentProduct.cat || p.brand === currentProduct.brand)
+  );
+  // Перемішуємо і беремо перші N
+  return others.sort(() => Math.random() - 0.5).slice(0, limit);
+}
+
+function renderRelatedProducts(currentProduct) {
+  const container = document.getElementById('modalRelated');
+  if (!container) return;
+  const related = getRelatedProducts(currentProduct, 3);
+  if (related.length === 0) {
+    container.style.display = 'none';
+    return;
+  }
+  container.style.display = 'block';
+  container.innerHTML = `
+    <div class="modal-related-title">Можливо вам сподобається</div>
+    <div class="modal-related-grid">
+      ${related.map(p => `
+        <div class="modal-related-card" onclick="openProductModal(${p.id})">
+          <div class="modal-related-img">
+            <picture>
+              <source srcset="${p.img.replace('.jpg', '.webp')}" type="image/webp">
+              <img src="${p.img}" alt="${p.name}" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="modal-related-name">${p.name}</div>
+          <div class="modal-related-price">${p.price.toLocaleString('uk-UA')} ₴</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// ============================================================
+// SCHEMA.ORG PRODUCT JSON-LD (для SEO)
+// ============================================================
+function injectProductsSchema() {
+  const products = PRODUCTS.map(p => ({
+    "@type": "Product",
+    "@id": `#product-${p.id}`,
+    "name": p.name,
+    "description": `${p.meta} · ${CAT_NAMES[p.cat]}. Турецький преміум домашній одяг від NEVARRI.`,
+    "image": new URL(p.img, location.href).href,
+    "brand": { "@type": "Brand", "name": "NEVARRI" },
+    "category": CAT_NAMES[p.cat],
+    "offers": {
+      "@type": "Offer",
+      "price": p.price,
+      "priceCurrency": "UAH",
+      "availability": "https://schema.org/InStock",
+      "url": `${location.origin}${location.pathname}#product-${p.id}`,
+      "seller": { "@type": "Organization", "name": "NEVARRI" }
+    }
+  }));
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": products
+  });
+  document.head.appendChild(script);
+}
+
+// ============================================================
+// SERVICE WORKER (PWA)
+// ============================================================
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(err => {
+      // Тихо игнорируем — SW не критичен
+    });
+  });
+}
+
+// ============================================================
 // INIT
 // ============================================================
 buildTicker();
@@ -4074,6 +5489,10 @@ initPromoRotator();
 initFilterOverflow();
 initFloatingTg();
 restoreFromURL();
+injectProductsSchema();
+initSort();
+initFAQ();
+initCookieBanner();
 
 // Re-check filter overflow after fonts load
 if (document.fonts && document.fonts.ready) {

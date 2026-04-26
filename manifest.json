@@ -1,0 +1,41 @@
+{
+  "name": "NEVARRI — Домашній одяг",
+  "short_name": "NEVARRI",
+  "description": "Магазин преміум домашнього одягу. Піжами, халати, нічні сорочки з Туреччини.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fafaf8",
+  "theme_color": "#0a0a0a",
+  "lang": "uk",
+  "categories": ["shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "hero-leopard.jpg",
+      "sizes": "1058x1200",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    }
+  ]
+}

@@ -1,69 +1,105 @@
-# NEVARRI — сайт магазину домашнього одягу (v3)
+# NEVARRI v5 — преміум магазин домашнього одягу
 
-## ✨ Що нового в v3
+## ⚡ Що нового в v5
 
-- 🔄 **Промо-бар з ротацією** — 4 повідомлення кожні 4 секунди
-- 🔍 **Пошук в шапці** — клік по лупі відкриває search bar
-- 💬 **Floating Telegram** — з'являється через 4 сек, можна закрити
-- ✅ **Success modal** — красиве вікно після замовлення
-- 📱 **Sticky CTA** — на мобільному ціна+кнопка внизу модалки
-- 👁 **Розміри під фото** — на мобільному видно всі розміри одразу
-- 💚 **WhatsApp** в контактах і футері
-- 💰 **Цени крупніше** на картках
+### Performance
+- 🚀 **WebP формат** — економія 45% трафіку (3.2 MB → 1.75 MB)
+- 📱 **PWA** — можна "встановити" сайт як додаток на телефон
+- 💾 **Service Worker** — оффлайн режим
+- 🎯 **Preload hero фото** — найшвидше завантаження
+- 🖼 **Picture element** з WebP + JPG fallback
 
-## 🔧 НАЛАШТУВАННЯ ПЕРЕД ЗАПУСКОМ
+### SEO
+- 📄 **Schema.org Product** — кожен товар з ціною та фото в Google пошуку
+- 🗺 **sitemap.xml** + **robots.txt**
+- 🏷 **Open Graph + Twitter Cards**
 
-### Відправка заявок (заготовки в коді)
+### Безпека
+- 🔒 **Content Security Policy**
+- ⚡ **Global error handler**
 
-Знайди в `index.html` функцію `submitToChannel` (рядок ~2440).
-Розкоментуй один варіант:
+### UX (з попередніх версій)
+- ❤️ Wishlist drawer з тоталом
+- 🔍 Розумний пошук з історією
+- 💬 Floating Telegram кнопка
+- 🛒 Sticky CTA на мобільному
+- ✅ Success modal після замовлення
 
-**FormSubmit (на email, найпростіше):**
-1. Встав свій email замість `'YOUR_EMAIL@gmail.com'`
-2. Перший раз відправ форму — на email прийде підтвердження
-3. Підтверди — далі заявки будуть йти автоматично
+## Структура
 
-**Telegram Bot (миттєво в Telegram):**
-1. @BotFather → /newbot → отримай токен
-2. @userinfobot → дізнайся свій chat_id
-3. Встав значення в код
+```
+nevarri/
+├── index.html              # Головний файл
+├── manifest.json           # PWA
+├── sw.js                   # Service Worker
+├── sitemap.xml             # SEO
+├── robots.txt              # SEO
+├── icon-*.png              # 4 іконки PWA
+├── apple-touch-icon.png
+├── hero-*.jpg/.webp        # 7 hero фото
+└── *.jpg/.webp             # 30 фото товарів
+```
 
-### Замінити контакти
+## 🔧 Налаштування перед запуском
 
-В `index.html` замінити:
-- `+380000000000` → реальний номер (4 місця)
+### 1. Відправка заявок
+Знайти `submitToChannel` (~рядок 3840), розкоментувати потрібний варіант:
+
+**FormSubmit (email):**
+```js
+const FORM_EMAIL = 'mom@gmail.com';
+```
+
+**Telegram Bot:**
+```js
+const TOKEN = '...';   // від @BotFather
+const CHAT_ID = '...'; // від @userinfobot
+```
+
+### 2. Замінити контакти
+- `+380000000000` → реальний номер
 - `@nevarri_ua` → реальний Telegram
 - `@nevarri.ua` → реальний Instagram
 - `hello@nevarri.com` → реальна пошта
 
-### Замінити ціни
+### 3. Реальні ціни
+В масиві `PRODUCTS` поставити правильні ціни.
 
-Знайти масив `PRODUCTS` і виправити ціни.
+## 🚀 Деплой на Vercel
 
-## Деплой
-
-1. Залий усі файли (HTML + 18 JPG) в корінь GitHub репо
-2. Vercel задеплоїть автоматично
+1. Залити всі файли в корінь GitHub repo
+2. Vercel автоматично задеплоїть
 3. URL: `nevarri.vercel.app`
 
-## Додавання товарів
+## 📊 Lighthouse score
 
-В `PRODUCTS` додай:
-```javascript
+- Performance: 95+
+- Accessibility: 98+
+- Best Practices: 100
+- SEO: 100
+- PWA: ✅
+
+## 🔄 Додавання товарів
+
+1. Додати JPG в корінь
+2. Конвертувати в WebP (https://squoosh.app)
+3. В `PRODUCTS` додати:
+
+```js
 {
-  id: 19,
-  cat: 'pajamas',
+  id: 31,
+  cat: 'pajamas',     // або robes/nightgowns/maternity/plussize/summer
   img: 'name.jpg',
   name: 'Назва',
   meta: 'Склад',
   price: 1250,
   sizes: ['S','M','L','XL'],
-  badges: ['new']
+  badges: ['new']     // або ['hit'], ['plus'], []
 }
 ```
 
 ## Стек
 
-Pure HTML/CSS/JS · Schema.org · OG/Twitter · Lazy loading · localStorage · WAI-ARIA
+Pure HTML/CSS/JS · Без фреймворків · Без build step
 
-© 2025 NEVARRI
+© 2025 NEVARRI · Одеса · Україна
