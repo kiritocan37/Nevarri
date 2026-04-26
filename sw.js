@@ -1,9 +1,9 @@
 // NEVARRI Service Worker v1
 // Cache-first для статики, network-first для HTML
 
-const CACHE_NAME = 'nevarri-v1';
-const RUNTIME_CACHE = 'nevarri-runtime-v1';
-const FONTS_CACHE = 'nevarri-fonts-v1';
+const CACHE_NAME = 'nevarri-v2';
+const RUNTIME_CACHE = 'nevarri-runtime-v2';
+const FONTS_CACHE = 'nevarri-fonts-v2';
 
 // Файлы которые кешируем сразу при установке
 const PRECACHE_URLS = [
